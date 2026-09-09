@@ -371,8 +371,15 @@ const Skills = () => {
         <div className="inline-flex items-center gap-1.5 p-1.5 rounded-2xl bg-slate-200/80 dark:bg-slate-900/80 border border-slate-300/80 dark:border-slate-800 shadow-sm shrink-0">
           {categoryTabs.map((tab) => (
             <button
+              type="button"
               key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => {
+                setActiveTab(tab.id);
+                const firstSkill = tab.id === 'all' 
+                  ? skillsDatabase[0] 
+                  : (skillsDatabase.find(s => s.category === tab.id) || skillsDatabase[0]);
+                if (firstSkill) setSelectedSkill(firstSkill);
+              }}
               className={`flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer shrink-0 ${
                 activeTab === tab.id
                   ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30'
@@ -402,23 +409,19 @@ const Skills = () => {
             </span>
           </div>
 
-          <motion.div 
-            layout
-            className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3.5"
-          >
-            <AnimatePresence>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3.5 min-h-[380px] content-start">
+            <AnimatePresence mode="popLayout">
               {filteredSkills.map((skill, index) => {
                 const isSelected = selectedSkill.id === skill.id;
 
                 return (
                   <motion.div
                     key={skill.id}
-                    layout
-                    initial={{ opacity: 0, scale: 0.9, y: 15 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                    transition={{ duration: 0.3, delay: index * 0.03 }}
-                    whileHover={{ scale: 1.03, y: -2 }}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
+                    whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => setSelectedSkill(skill)}
                     onMouseEnter={() => {
@@ -434,10 +437,7 @@ const Skills = () => {
                   >
                     {/* Active Accent Bar */}
                     {isSelected && (
-                      <motion.div 
-                        layoutId="activeSkillBar"
-                        className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500"
-                      />
+                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500" />
                     )}
 
                     <div className="flex items-start justify-between mb-2.5 sm:mb-3">
@@ -460,19 +460,16 @@ const Skills = () => {
 
                     {/* Animated Micro Progress Bar */}
                     <div className="mt-2.5 sm:mt-3 w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                      <motion.div
-                        className="h-full rounded-full"
-                        style={{ background: skill.color || '#3B82F6' }}
-                        initial={{ width: 0 }}
-                        animate={{ width: `${skill.proficiency}%` }}
-                        transition={{ duration: 0.8, delay: index * 0.04 }}
+                      <div
+                        className="h-full rounded-full transition-all duration-500"
+                        style={{ background: skill.color || '#3B82F6', width: `${skill.proficiency}%` }}
                       />
                     </div>
                   </motion.div>
                 );
               })}
             </AnimatePresence>
-          </motion.div>
+          </div>
         </div>
 
         {/* RIGHT PANEL (5 Cols): Live Detailed Skill Telemetry & Architecture Inspector */}
