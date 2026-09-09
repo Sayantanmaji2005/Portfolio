@@ -94,10 +94,55 @@ const PreviewBookstore = () => (
   </div>
 );
 
+const PreviewSeedmart = () => (
+  <div className="w-full h-full flex flex-col justify-between font-mono text-[9px] text-slate-300 p-1">
+    <div className="flex items-center justify-between border-b border-slate-800 pb-1.5 text-emerald-400 font-bold">
+      <span className="flex items-center gap-1.5">
+        <FiZap className="text-emerald-400 animate-pulse" /> SEEDMART // E-COMMERCE
+      </span>
+      <span className="text-[8px] bg-emerald-500/20 text-emerald-300 px-1.5 py-0.5 rounded border border-emerald-500/30 font-bold flex items-center gap-1">
+        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+        BETA v0.9 (WIP)
+      </span>
+    </div>
+    <div className="space-y-1.5 my-1">
+      <div className="grid grid-cols-3 gap-1.5">
+        <div className="p-1.5 rounded bg-slate-900 border border-slate-800 flex flex-col items-center text-center">
+          <span className="text-[11px]">🌱</span>
+          <span className="text-[7.5px] font-bold text-slate-200 truncate max-w-full">Hybrid Wheat</span>
+          <span className="text-[8px] text-emerald-400 font-bold font-mono">₹450/kg</span>
+        </div>
+        <div className="p-1.5 rounded bg-slate-900 border border-slate-800 flex flex-col items-center text-center">
+          <span className="text-[11px]">🌾</span>
+          <span className="text-[7.5px] font-bold text-slate-200 truncate max-w-full">Basmati Paddy</span>
+          <span className="text-[8px] text-emerald-400 font-bold font-mono">₹620/kg</span>
+        </div>
+        <div className="p-1.5 rounded bg-slate-900 border border-slate-800 flex flex-col items-center text-center">
+          <span className="text-[11px]">🌽</span>
+          <span className="text-[7.5px] font-bold text-slate-200 truncate max-w-full">Sweet Corn F1</span>
+          <span className="text-[8px] text-emerald-400 font-bold font-mono">₹380/kg</span>
+        </div>
+      </div>
+      <div className="p-1 rounded bg-[#080B10] border border-slate-800/80 flex items-center justify-between text-[7.5px]">
+        <span className="text-slate-400 flex items-center gap-1">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+          Bulk Weight Tier Cart
+        </span>
+        <span className="text-amber-300 font-bold">Active Sprint Build</span>
+      </div>
+    </div>
+    <div className="text-[7.5px] text-slate-400 flex justify-between border-t border-slate-800 pt-1">
+      <span>Full-Stack Architecture</span>
+      <span className="text-emerald-400 font-bold">Catalog Engine Online</span>
+    </div>
+  </div>
+);
+
 const previewMap = {
   'labintel': <PreviewLabintel />,
   'labintel-ai': <PreviewLabintelAI />,
   'bookstore': <PreviewBookstore />,
+  'seedmart': <PreviewSeedmart />,
 };
 
 /* ───────────────────────────────────
@@ -115,7 +160,7 @@ const projectsList = [
     badge: 'Enterprise Healthcare',
     description: 'A role-based Laboratory Information Management System (LIMS) designed to digitize India’s 100,000+ independent pathology labs, reducing morning report preparation from 3 hours to 20 minutes.',
     link: 'https://labintelorg.vercel.app/lab/secondlab/login',
-    github: 'https://github.com/Labintel-dev/Labintel.git',
+    github: 'https://github.com/Sayantanmaji2005',
     tech: ['React 18', 'Node.js 20', 'Express', 'Supabase', 'PostgreSQL (RLS)', 'Puppeteer', 'Tailwind CSS'],
     stats: [
       { label: 'Time Saved', val: '90%' },
@@ -141,7 +186,7 @@ const projectsList = [
     badge: 'Certified AI Builder',
     description: 'An intelligent medical copilot translating raw clinical test ranges into readable patient insights in 15 seconds, featuring voice report narration in Hindi, Bengali, Tamil, and Telugu.',
     link: 'https://labintelorg.vercel.app/',
-    github: 'https://github.com/Labintel-dev/Labintel.git',
+    github: 'https://github.com/Sayantanmaji2005',
     tech: ['Groq Cloud API', 'Llama 3 (70B)', 'Gemini Vision OCR', 'Regional TTS', 'React', 'Zustand'],
     stats: [
       { label: 'Inference', val: '<200ms' },
@@ -157,17 +202,45 @@ const projectsList = [
     previewType: 'labintel-ai',
   },
   {
+    id: 'seedmart',
+    category: 'fullstack',
+    title: 'SeedMart',
+    tagline: 'Smart Agro-Commerce & Seed Marketplace',
+    color: '#10B981',
+    glow: 'rgba(16,185,129,0.18)',
+    hasDeck: false,
+    badge: '🌱 Agro-Commerce // Demo Mode',
+    isWip: false,
+    demoNote: '⚡ Note: Platform is currently active in Demo / Testing Mode with sample seed catalogs.',
+    description: 'A modern full-stack e-commerce marketplace connecting farmers with certified seed suppliers, featuring seasonal crop catalogs, bulk weight tier pricing, and automated inventory logistics.',
+    link: 'https://seed-mart-one.vercel.app/',
+    github: 'https://github.com/Sayantanmaji2005',
+    tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Tailwind CSS', 'REST APIs', 'JWT Auth'],
+    stats: [
+      { label: 'Status', val: 'Live Demo' },
+      { label: 'Sector', val: 'Agri-Tech' },
+      { label: 'Pricing', val: 'Tiered Bulk' }
+    ],
+    features: [
+      'Seasonal seed categorization for Kharif, Rabi, and Zaid cultivation cycles',
+      'Dynamic volume-based tier discounting engine for large farming collectives',
+      'Real-time inventory thresholds, germination batch validation, and order tracking',
+      'Farmer-friendly responsive portal with optimized high-speed mobile checkout',
+    ],
+    previewType: 'seedmart',
+  },
+  {
     id: 'bookstore',
     category: 'fullstack',
     title: 'Online Book Store',
     tagline: 'Modern MERN E-Commerce Architecture',
     color: '#7C3AED',
     glow: 'rgba(124,58,237,0.15)',
-    hasDeck: false,
+    hasDeck: true,
     badge: 'Full-Stack Web',
     description: 'A complete e-commerce MERN platform to search, browse, and purchase catalog items with secure checkouts, admin stock telemetry, and real-time inventory validation.',
     link: 'https://bookstore-iota-three.vercel.app',
-    github: 'https://github.com/Sayantanmaji2005/Online-Book-Store',
+    github: 'https://github.com/Sayantanmaji2005',
     tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'REST APIs', 'CSS3'],
     stats: [
       { label: 'Architecture', val: 'MERN' },
@@ -396,9 +469,9 @@ const Projects = () => {
       </div>
 
       {/* ─────────────────────────────────────────────────────────────
-          PROJECTS GRID (Perfect Contrast in Light & Dark Mode)
+          PROJECTS GRID (2x2 Balanced Grid in Light & Dark Mode)
          ───────────────────────────────────────────────────────────── */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {filteredProjects.map((project, index) => (
           <motion.div
             key={project.id}
@@ -464,7 +537,7 @@ const Projects = () => {
                   </p>
                 </div>
 
-                {/* Stats Pill Row (Light: light-slate with dark text, Dark: dark-slate with light text) */}
+                {/* Stats Pill Row */}
                 <div className="grid grid-cols-3 gap-2 py-1">
                   {project.stats.map((s, i) => (
                     <div key={i} className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 text-center">
@@ -505,25 +578,55 @@ const Projects = () => {
               {/* Action Buttons */}
               <div className="space-y-2 pt-5 mt-5 border-t border-slate-200 dark:border-slate-800">
                 {project.hasDeck && (
-                  <button
-                    onClick={() => openPresentationDeck(project)}
-                    className="w-full py-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 dark:bg-blue-600/20 dark:hover:bg-blue-600/30 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-500/40 text-xs font-bold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm"
-                  >
-                    <FiZap className="w-3.5 h-3.5 text-amber-500 dark:text-amber-300" />
-                    <span>View Architecture PPT Deck</span>
-                  </button>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => openPresentationDeck(project)}
+                      className="flex-1 py-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 dark:bg-blue-600/20 dark:hover:bg-blue-600/30 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-500/40 text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-sm"
+                    >
+                      <FiZap className="w-3.5 h-3.5 text-amber-500 dark:text-amber-300" />
+                      <span>{project.id === 'bookstore' ? 'View Architecture & PDF Deck' : 'View Architecture PPT Deck'}</span>
+                    </button>
+                    {project.id === 'bookstore' ? (
+                      <a
+                        href="/projects/bookstore/Online_Bookstore_Full_Stack_Project.pdf"
+                        download="Online_Bookstore_Full_Stack_Project.pdf"
+                        className="px-3 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-xs font-bold flex items-center justify-center gap-1 transition-all cursor-pointer"
+                        title="Download Project PDF"
+                      >
+                        <FiDownload className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
+                        <span className="hidden sm:inline">PDF</span>
+                      </a>
+                    ) : (
+                      <a
+                        href="/projects/labintel/Labintel_Presentation.pptx"
+                        download="Labintel_Presentation.pptx"
+                        className="px-3 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-xs font-bold flex items-center justify-center gap-1 transition-all cursor-pointer"
+                        title="Download Project PPTX"
+                      >
+                        <FiDownload className="w-3.5 h-3.5 text-blue-600 dark:text-sky-400" />
+                        <span className="hidden sm:inline">PPT</span>
+                      </a>
+                    )}
+                  </div>
                 )}
 
                 <div className="flex gap-2">
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-premium-accent flex-1 py-2 text-xs flex items-center justify-center gap-1.5 font-bold rounded-xl cursor-pointer"
-                  >
-                    <span>Live Demo</span>
-                    <FiExternalLink className="w-3 h-3" />
-                  </a>
+                  {project.isWip ? (
+                    <div className="flex-1 py-2 px-3 rounded-xl bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/30 text-xs font-bold flex items-center justify-center gap-1.5 cursor-default">
+                      <span className="w-2 h-2 rounded-full bg-amber-500 animate-ping" />
+                      <span>In Active Sprint</span>
+                    </div>
+                  ) : (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-premium-accent flex-1 py-2 text-xs flex items-center justify-center gap-1.5 font-bold rounded-xl cursor-pointer"
+                    >
+                      <span>Live Demo</span>
+                      <FiExternalLink className="w-3 h-3" />
+                    </a>
+                  )}
                   <a
                     href={project.github}
                     target="_blank"
@@ -534,6 +637,13 @@ const Projects = () => {
                     <FiGithub className="w-3 h-3" />
                   </a>
                 </div>
+
+                {project.demoNote && (
+                  <div className="flex items-start gap-2 p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/25 text-[10.5px] text-amber-800 dark:text-amber-300 font-mono leading-relaxed mt-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-ping shrink-0 mt-1" />
+                    <span>{project.demoNote}</span>
+                  </div>
+                )}
               </div>
             </Tilt>
           </motion.div>

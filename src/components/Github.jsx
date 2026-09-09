@@ -50,7 +50,7 @@ const Github = () => {
     user: { public_repos: 18, followers: 1, following: 0, login: 'Sayantanmaji2005' },
     repos: [
       { name: 'Portfolio', language: 'JavaScript', stars: 1, updated_at: '2026-09-09T06:02:19Z', html_url: 'https://github.com/Sayantanmaji2005/Portfolio', description: 'Advanced Full-Stack Developer Portfolio with Three.js and Framer Motion' },
-      { name: 'Labintel', language: 'JavaScript', stars: 2, updated_at: '2026-09-08T18:30:00Z', html_url: 'https://github.com/Labintel-dev/Labintel.git', description: 'Cloud LIMS Pathology Diagnostic Suite with AI Voice Narration' },
+      { name: 'Labintel', language: 'JavaScript', stars: 2, updated_at: '2026-09-08T18:30:00Z', html_url: 'https://github.com/Sayantanmaji2005', description: 'Cloud LIMS Pathology Diagnostic Suite with AI Voice Narration' },
       { name: 'api-rate-limiter', language: 'Java', stars: 1, updated_at: '2026-07-03T13:04:44Z', html_url: 'https://github.com/Sayantanmaji2005/api-rate-limiter', description: 'Token Bucket & Sliding Window High-Throughput Daemon' },
       { name: 'Online-Book-Store', language: 'JavaScript', stars: 1, updated_at: '2026-06-12T10:15:20Z', html_url: 'https://github.com/Sayantanmaji2005/Online-Book-Store', description: 'Full-Stack MERN E-Commerce Platform with Admin Telemetry' },
       { name: 'Aether-Quant', language: 'Python', stars: 1, updated_at: '2026-03-23T11:31:50Z', html_url: 'https://github.com/Sayantanmaji2005/Aether-Quant', description: 'Quantitative Financial Algorithmic Analytics & Trading Logic' },

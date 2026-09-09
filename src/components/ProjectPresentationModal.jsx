@@ -477,10 +477,299 @@ export const labintelSlides = [
   }
 ];
 
+export const bookstoreSlides = [
+  {
+    id: 1,
+    tag: '01 // EXECUTIVE SUMMARY',
+    title: 'Online Book Store — MERN E-Commerce Architecture',
+    subtitle: 'Modern Full-Stack Book Retailing Platform with Real-Time Inventory & Cart Telemetry',
+    type: 'overview',
+    badge: 'Full-Stack Web System',
+    highlights: [
+      { label: 'Architecture', val: 'MERN', sub: 'React 18 + Node.js + MongoDB' },
+      { label: 'Query Latency', val: '<80ms', sub: 'Indexed MongoDB Atlas Cluster' },
+      { label: 'Security', val: 'JWT + Bcrypt', sub: 'Signed Auth & Role Guards' },
+      { label: 'Cart Sync', val: 'Real-Time', sub: 'Stock Verification On Checkout' }
+    ],
+    content: (
+      <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="p-4 rounded-2xl bg-purple-50 dark:bg-purple-500/15 border border-purple-200 dark:border-purple-500/30 shadow-sm">
+            <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-500/25 flex items-center justify-center text-purple-600 dark:text-purple-300 mb-3 text-lg font-bold">
+              📚
+            </div>
+            <h4 className="text-slate-900 dark:text-white font-bold text-base mb-1">Dynamic Catalog Engine</h4>
+            <p className="text-xs text-slate-600 dark:text-slate-200 leading-relaxed font-normal">
+              Instant multi-genre filtering, regex-powered search, and responsive catalog browsing across hundreds of titles.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-blue-50 dark:bg-blue-500/15 border border-blue-200 dark:border-blue-500/30 shadow-sm">
+            <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-500/25 flex items-center justify-center text-blue-600 dark:text-blue-300 mb-3 text-lg font-bold">
+              🛒
+            </div>
+            <h4 className="text-slate-900 dark:text-white font-bold text-base mb-1">Live Cart &amp; Stock Sync</h4>
+            <p className="text-xs text-slate-600 dark:text-slate-200 leading-relaxed font-normal">
+              State-synchronized shopping cart with server-side stock-level validation to prevent checkout conflicts.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-500/15 border border-emerald-200 dark:border-emerald-500/30 shadow-sm">
+            <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-500/25 flex items-center justify-center text-emerald-600 dark:text-emerald-300 mb-3 text-lg font-bold">
+              ⚡
+            </div>
+            <h4 className="text-slate-900 dark:text-white font-bold text-base mb-1">Admin Inventory Portal</h4>
+            <p className="text-xs text-slate-600 dark:text-slate-200 leading-relaxed font-normal">
+              Full administrator control to dynamically add, update, discount, and archive book inventory entries.
+            </p>
+          </div>
+        </div>
+
+        <div className="p-4 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 flex flex-col md:flex-row items-center justify-between gap-4 shadow-sm">
+          <div className="flex items-center gap-3">
+            <div className="w-3 h-3 rounded-full bg-purple-500 dark:bg-purple-400 animate-ping" />
+            <span className="text-sm font-medium text-slate-800 dark:text-slate-100">
+              Engineered by <strong className="text-purple-600 dark:text-purple-400 font-bold">Sayantan Maji</strong> • Full-Stack MERN Architecture
+            </span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-purple-100 dark:bg-purple-500/25 text-purple-700 dark:text-purple-200 border border-purple-200 dark:border-purple-400/40">
+              React SPA
+            </span>
+            <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-100 dark:bg-emerald-500/25 text-emerald-700 dark:text-emerald-200 border border-emerald-200 dark:border-emerald-400/40">
+              Express REST
+            </span>
+            <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-blue-100 dark:bg-blue-500/25 text-blue-700 dark:text-blue-200 border border-blue-200 dark:border-blue-400/40">
+              MongoDB Atlas
+            </span>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: 2,
+    tag: '02 // PROBLEM & ARCHITECTURAL GOALS',
+    title: 'Modern Retail Challenges in Digital Publishing',
+    subtitle: 'Overcoming stale cart states, slow multi-category indexing, and unauthenticated administrative tampering.',
+    type: 'problem',
+    badge: 'Core Objectives',
+    content: (
+      <div className="space-y-6">
+        <div className="p-4 rounded-2xl bg-purple-50 dark:bg-purple-500/15 border border-purple-200 dark:border-purple-500/30 text-purple-900 dark:text-purple-100 text-sm font-medium italic shadow-sm">
+          "Modern digital book retail requires lightning-fast catalog search, dynamic price calculations, and frictionless checkouts across mobile and desktop devices."
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="p-5 rounded-2xl bg-slate-50 dark:bg-[#0e1217] border border-slate-200 dark:border-slate-700 flex flex-col justify-between shadow-sm">
+            <div>
+              <div className="text-3xl font-black text-rose-500 font-mono mb-2">Cart Tampering</div>
+              <h4 className="text-slate-900 dark:text-white font-bold text-sm mb-2">Client-Side Price Drift</h4>
+              <p className="text-xs text-slate-600 dark:text-slate-200 leading-relaxed font-normal">
+                Naive e-commerce apps suffer from client-side price modification and stale stock counts when multiple browser tabs are active.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-bold">
+              ✓ Solved: Server-Side Total &amp; Stock Verification
+            </div>
+          </div>
+
+          <div className="p-5 rounded-2xl bg-slate-50 dark:bg-[#0e1217] border border-slate-200 dark:border-slate-700 flex flex-col justify-between shadow-sm">
+            <div>
+              <div className="text-3xl font-black text-amber-500 font-mono mb-2">Slow Queries</div>
+              <h4 className="text-slate-900 dark:text-white font-bold text-sm mb-2">Unindexed Table Scans</h4>
+              <p className="text-xs text-slate-600 dark:text-slate-200 leading-relaxed font-normal">
+                Slow full-collection scans when filtering by genre or author lead to high bounce rates during peak retail browsing.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-bold">
+              ✓ Solved: MongoDB Compound B-Tree Indexes
+            </div>
+          </div>
+
+          <div className="p-5 rounded-2xl bg-slate-50 dark:bg-[#0e1217] border border-slate-200 dark:border-slate-700 flex flex-col justify-between shadow-sm">
+            <div>
+              <div className="text-3xl font-black text-blue-500 font-mono mb-2">Security Breach</div>
+              <h4 className="text-slate-900 dark:text-white font-bold text-sm mb-2">Unprotected CRUD Routes</h4>
+              <p className="text-xs text-slate-600 dark:text-slate-200 leading-relaxed font-normal">
+                Open APIs without granular role validation allow unauthorized modifications to book pricing, inventory, and user orders.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-bold">
+              ✓ Solved: JWT Signatures &amp; Admin Middleware Guards
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: 3,
+    tag: '03 // 3-TIER SYSTEM ARCHITECTURE',
+    title: 'Distributed Full-Stack Data Pipeline',
+    subtitle: 'End-to-end request lifecycle from React SPA to Express.js Router and MongoDB Atlas.',
+    type: 'architecture',
+    badge: 'System Design',
+    content: (
+      <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="p-5 rounded-2xl bg-gradient-to-b from-purple-50/80 to-white dark:from-slate-900 dark:to-[#070A11] border border-purple-200 dark:border-purple-500/30 shadow-md">
+            <div className="text-xs font-mono font-bold text-purple-600 dark:text-purple-400 uppercase tracking-wider mb-2">
+              Tier 1: Client Layer
+            </div>
+            <h4 className="text-base font-bold text-slate-900 dark:text-white mb-2">React 18 SPA</h4>
+            <ul className="space-y-1.5 text-xs text-slate-600 dark:text-slate-200">
+              <li>• Responsive Tailwind CSS interface</li>
+              <li>• Context API global cart state</li>
+              <li>• Axios interceptor token injector</li>
+              <li>• Client-side protected route guards</li>
+            </ul>
+          </div>
+
+          <div className="p-5 rounded-2xl bg-gradient-to-b from-blue-50/80 to-white dark:from-slate-900 dark:to-[#070A11] border border-blue-200 dark:border-blue-500/30 shadow-md">
+            <div className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-2">
+              Tier 2: API Gateway
+            </div>
+            <h4 className="text-base font-bold text-slate-900 dark:text-white mb-2">Node.js + Express</h4>
+            <ul className="space-y-1.5 text-xs text-slate-600 dark:text-slate-200">
+              <li>• RESTful routing controllers</li>
+              <li>• JWT token verification barrier</li>
+              <li>• Input validation schemas</li>
+              <li>• Global error handling middleware</li>
+            </ul>
+          </div>
+
+          <div className="p-5 rounded-2xl bg-gradient-to-b from-emerald-50/80 to-white dark:from-slate-900 dark:to-[#070A11] border border-emerald-200 dark:border-emerald-500/30 shadow-md">
+            <div className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-2">
+              Tier 3: Persistence
+            </div>
+            <h4 className="text-base font-bold text-slate-900 dark:text-white mb-2">MongoDB Atlas</h4>
+            <ul className="space-y-1.5 text-xs text-slate-600 dark:text-slate-200">
+              <li>• Mongoose strict schema models</li>
+              <li>• Bcrypt hashed password credentials</li>
+              <li>• Compound indexes on (genre, price)</li>
+              <li>• Automatic timestamp audit trails</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="p-4 rounded-2xl bg-[#080B12] border border-slate-800 font-mono text-[11px] text-slate-300 shadow-inner">
+          <div className="text-purple-400 font-bold mb-1 flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+            <span>DATA FLOW // Client Request Lifecycle:</span>
+          </div>
+          <p className="text-slate-400 leading-relaxed">
+            User Action → React Dispatch → Axios JWT Header → Express Router → Auth Guard → Controller Execution → Mongoose Query → MongoDB Atlas → JSON Payload (Avg &lt;80ms)
+          </p>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: 4,
+    tag: '04 // CORE ENGINE SPECIFICATIONS',
+    title: 'Database Schema & API Specifications',
+    subtitle: 'Granular view into catalog search schemas, stock lock mechanics, and order transaction records.',
+    type: 'features',
+    badge: 'Engineering Specs',
+    content: (
+      <div className="space-y-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="p-4 rounded-2xl bg-slate-50 dark:bg-[#0D121F] border border-slate-200 dark:border-slate-800">
+            <div className="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-800 mb-3">
+              <span className="font-mono text-xs font-bold text-purple-600 dark:text-purple-400">Book Model Schema</span>
+              <span className="text-[10px] font-mono text-slate-400">Mongoose Collection</span>
+            </div>
+            <div className="font-mono text-[11px] text-slate-700 dark:text-slate-300 space-y-1">
+              <div><strong className="text-blue-500">title:</strong> String (Indexed, Required)</div>
+              <div><strong className="text-blue-500">author:</strong> String (Indexed, Required)</div>
+              <div><strong className="text-blue-500">genre:</strong> String (Category Filter)</div>
+              <div><strong className="text-blue-500">price:</strong> Number (Valid: &gt; 0)</div>
+              <div><strong className="text-blue-500">stockCount:</strong> Number (Real-Time Lock)</div>
+              <div><strong className="text-blue-500">coverImage:</strong> String (CDN URL)</div>
+            </div>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-slate-50 dark:bg-[#0D121F] border border-slate-200 dark:border-slate-800">
+            <div className="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-800 mb-3">
+              <span className="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">Order Transaction Schema</span>
+              <span className="text-[10px] font-mono text-slate-400">Mongoose Collection</span>
+            </div>
+            <div className="font-mono text-[11px] text-slate-700 dark:text-slate-300 space-y-1">
+              <div><strong className="text-emerald-500">user:</strong> ObjectId (Ref: 'User')</div>
+              <div><strong className="text-emerald-500">orderItems:</strong> Array [{'{ bookId, quantity, price }'}]</div>
+              <div><strong className="text-emerald-500">totalAmount:</strong> Number (Server Calculated)</div>
+              <div><strong className="text-emerald-500">paymentStatus:</strong> 'Pending' | 'Completed'</div>
+              <div><strong className="text-emerald-500">orderDate:</strong> Timestamp (Auto ISO)</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="p-4 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+          <span className="text-xs font-mono text-slate-600 dark:text-slate-400 font-semibold">
+            ⚡ REST Endpoints: GET /api/books • POST /api/auth/login • POST /api/orders • PUT /api/admin/books/:id
+          </span>
+          <span className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 whitespace-nowrap">
+            100% Tested &amp; Active
+          </span>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: 5,
+    tag: '05 // DEPLOYMENT & PRODUCTION STATUS',
+    title: 'Live Cloud Infrastructure & Production Verification',
+    subtitle: 'Zero-downtime Continuous Deployment on Vercel with MongoDB Atlas replica cluster.',
+    type: 'conclusion',
+    badge: 'Live on Vercel',
+    content: (
+      <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="p-5 rounded-2xl bg-slate-50 dark:bg-[#0D121F] border border-slate-200 dark:border-slate-800 text-center">
+            <span className="text-[10px] font-mono uppercase text-slate-400 font-bold block mb-1">Frontend Hosting</span>
+            <span className="text-lg font-bold text-purple-600 dark:text-purple-400 font-mono block">Vercel Edge</span>
+            <span className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 block">Global CDN with Automated Git CI/CD</span>
+          </div>
+
+          <div className="p-5 rounded-2xl bg-slate-50 dark:bg-[#0D121F] border border-slate-200 dark:border-slate-800 text-center">
+            <span className="text-[10px] font-mono uppercase text-slate-400 font-bold block mb-1">Database Cluster</span>
+            <span className="text-lg font-bold text-emerald-600 dark:text-emerald-400 font-mono block">MongoDB Atlas</span>
+            <span className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 block">Replica Sets &amp; Automated Backups</span>
+          </div>
+
+          <div className="p-5 rounded-2xl bg-slate-50 dark:bg-[#0D121F] border border-slate-200 dark:border-slate-800 text-center">
+            <span className="text-[10px] font-mono uppercase text-slate-400 font-bold block mb-1">Security Vault</span>
+            <span className="text-lg font-bold text-blue-600 dark:text-blue-400 font-mono block">JWT &amp; Bcrypt</span>
+            <span className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 block">Protected Environment Variables</span>
+          </div>
+        </div>
+
+        <div className="p-5 rounded-2xl bg-gradient-to-r from-purple-500/10 via-blue-500/10 to-emerald-500/10 border border-purple-500/20 text-center space-y-2">
+          <h4 className="text-base font-black text-slate-900 dark:text-white" style={{ fontFamily: 'Syne, Outfit, sans-serif' }}>
+            Experience the Live MERN E-Commerce Platform
+          </h4>
+          <p className="text-xs text-slate-600 dark:text-slate-300">
+            Production live deployment available at <a href="https://bookstore-iota-three.vercel.app" target="_blank" rel="noreferrer" className="text-purple-600 dark:text-purple-300 hover:underline font-mono font-bold">bookstore-iota-three.vercel.app</a>
+          </p>
+        </div>
+      </div>
+    )
+  }
+];
+
 export default function ProjectPresentationModal({ isOpen, onClose, project }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const slides = labintelSlides;
+  const slides = project?.id === 'bookstore' ? bookstoreSlides : labintelSlides;
+
+  // Reset slide when project or modal changes
+  useEffect(() => {
+    if (isOpen) {
+      setCurrentSlide(0);
+      setIsPlaying(false);
+    }
+  }, [isOpen, project?.id]);
 
   // Next / Prev slide handlers
   const nextSlide = useCallback(() => {
@@ -559,12 +848,12 @@ export default function ProjectPresentationModal({ isOpen, onClose, project }) {
           <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#0A0D14]">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-500/25 text-blue-600 dark:text-blue-300 flex items-center justify-center font-bold font-mono text-sm border border-blue-200 dark:border-blue-400/40">
-                LI
+                {project?.id === 'bookstore' ? 'BS' : 'LI'}
               </div>
               <div>
                 <div className="flex items-center gap-2">
                   <h3 className="font-bold text-sm sm:text-base text-slate-900 dark:text-white font-sans">
-                    LabIntel Architecture & Deep-Dive Deck
+                    {project?.id === 'bookstore' ? 'Online Book Store Architecture & Deck' : 'LabIntel Architecture & Deep-Dive Deck'}
                   </h3>
                   <span className="hidden sm:inline-block text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-500/30 font-mono font-bold">
                     {slide.badge}
@@ -591,16 +880,28 @@ export default function ProjectPresentationModal({ isOpen, onClose, project }) {
                 <span className="hidden md:inline">{isPlaying ? 'Pause' : 'Autoplay'}</span>
               </button>
 
-              {/* Download PPT */}
-              <a
-                href="/projects/labintel/Labintel_Presentation.pptx"
-                download="Labintel_Presentation.pptx"
-                className="p-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-white hover:border-blue-300 dark:hover:border-blue-400 text-xs flex items-center gap-1.5 transition-colors cursor-pointer font-medium shadow-sm"
-                title="Download original PPTX presentation"
-              >
-                <FiDownload className="w-3.5 h-3.5 text-blue-600 dark:text-sky-400" />
-                <span className="hidden md:inline">Download PPT</span>
-              </a>
+              {/* Download / Action Link */}
+              {project?.id === 'bookstore' ? (
+                <a
+                  href="/projects/bookstore/Online_Bookstore_Full_Stack_Project.pdf"
+                  download="Online_Bookstore_Full_Stack_Project.pdf"
+                  className="p-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-purple-600 dark:hover:text-white hover:border-purple-300 text-xs flex items-center gap-1.5 transition-colors cursor-pointer font-medium shadow-sm"
+                  title="Download Online Book Store Full Stack Project PDF"
+                >
+                  <FiDownload className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
+                  <span className="hidden md:inline">Download PDF</span>
+                </a>
+              ) : (
+                <a
+                  href="/projects/labintel/Labintel_Presentation.pptx"
+                  download="Labintel_Presentation.pptx"
+                  className="p-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-white hover:border-blue-300 dark:hover:border-blue-400 text-xs flex items-center gap-1.5 transition-colors cursor-pointer font-medium shadow-sm"
+                  title="Download original PPTX presentation"
+                >
+                  <FiDownload className="w-3.5 h-3.5 text-blue-600 dark:text-sky-400" />
+                  <span className="hidden md:inline">Download PPT</span>
+                </a>
+              )}
 
               {/* Close */}
               <button
@@ -686,12 +987,12 @@ export default function ProjectPresentationModal({ isOpen, onClose, project }) {
               </a>
 
               <a
-                href="https://github.com/Labintel-dev/Labintel.git"
+                href={project?.github || "https://github.com/Sayantanmaji2005"}
                 target="_blank"
                 rel="noreferrer"
                 className="hidden sm:flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white font-semibold transition-colors"
               >
-                <span>GitHub Repo</span>
+                <span>GitHub Profile</span>
                 <FiGithub className="w-3 h-3" />
               </a>
 
