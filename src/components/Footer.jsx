@@ -15,7 +15,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative z-10 pt-14 pb-10 border-t border-slate-200 dark:border-white/10 bg-white/80 dark:bg-[#08090D]/90 backdrop-blur-xl transition-colors duration-300">
+    <footer className="relative z-10 pt-14 pb-10 border-t border-slate-200 dark:border-white/10 bg-white/80 dark:bg-[#0B0F19]/90 backdrop-blur-xl transition-colors duration-300">
       {/* Subtle top gradient glow stroke */}
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-sky-500/40 to-transparent" />
 

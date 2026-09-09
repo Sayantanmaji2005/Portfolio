@@ -69,8 +69,8 @@ const Hero = () => {
       id="home"
       className="min-h-screen relative flex items-center justify-center pt-24 pb-16 overflow-hidden z-10 overflow-x-hidden text-white"
     >
-      {/* ── SPLIT BACKGROUND: Left Side Video, Right Side Normal Dark Portfolio Background ── */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden flex flex-col lg:flex-row">
+      {/* ── SPLIT BACKGROUND: Left Side Video, Right Side Constant Sleek Black Theme ── */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden flex flex-col lg:flex-row bg-[#08090D]">
         {/* Left Side: Video Background */}
         <div className="w-full lg:w-1/2 h-full relative overflow-hidden">
           <video
@@ -87,7 +87,7 @@ const Hero = () => {
           <div className="absolute inset-0 bg-[#08090D]/50 z-[1] lg:hidden" />
         </div>
 
-        {/* Right Side: Sleek Black Theme Background */}
+        {/* Right Side: Constant Black Theme Background */}
         <div className="w-full lg:w-1/2 h-full bg-[#08090D] relative hidden lg:block border-l border-zinc-800/60">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-sky-950/20 via-[#08090D] to-[#08090D]" />
         </div>

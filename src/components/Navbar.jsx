@@ -78,7 +78,7 @@ const Navbar = () => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 py-3 px-4 sm:px-8 flex items-center justify-between border-b backdrop-blur-xl transition-colors duration-300 bg-white/80 dark:bg-[#08090D]/85 border-slate-200/80 dark:border-white/10"
+      className="fixed top-0 left-0 right-0 z-50 py-3 px-4 sm:px-8 flex items-center justify-between border-b backdrop-blur-xl transition-colors duration-300 bg-white/80 dark:bg-[#0B0F19]/85 border-slate-200/80 dark:border-white/10"
     >
       {/* ── Left Branding Logo ── */}
       <div 
