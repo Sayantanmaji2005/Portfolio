@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiUser, FiCode, FiLayers, FiActivity, FiX, FiTerminal } from 'react-icons/fi';
 import { playHoverSound, playWhooshSound } from '../utils/soundFx';
@@ -6,6 +6,20 @@ import { playHoverSound, playWhooshSound } from '../utils/soundFx';
 const Terminal = () => {
   const [activeCmd, setActiveCmd] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Lock background scroll when modal is open
+  useEffect(() => {
+    if (isModalOpen) {
+      const originalBodyOverflow = document.body.style.overflow;
+      const originalHtmlOverflow = document.documentElement.style.overflow;
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = originalBodyOverflow;
+        document.documentElement.style.overflow = originalHtmlOverflow;
+      };
+    }
+  }, [isModalOpen]);
 
   const commands = [
     { id: 'whoami', label: 'whoami', icon: <FiUser className="w-4 h-4" /> },
@@ -177,7 +191,7 @@ const Terminal = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
+            className="fixed inset-0 z-[120] flex items-center justify-center p-4 sm:p-6"
           >
             {/* Dark Backdrop */}
             <div 
