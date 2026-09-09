@@ -52,10 +52,10 @@ const Chatbot = () => {
           y: { duration: 3, repeat: Infinity, ease: "easeInOut" }
         }}
         onMouseEnter={playHover}
-        onClick={() => { playClick(); setIsOpen(true); }}
-        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-white shadow-2xl z-40 overflow-visible group cursor-pointer hover:scale-105 active:scale-95"
+        onClick={() => { playClick(); setIsOpen(prev => !prev); }}
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-white shadow-2xl z-[100] overflow-visible group cursor-pointer hover:scale-105 active:scale-95"
         style={{ padding: 0 }}
-        aria-label="Open AI Assistant"
+        aria-label="Toggle AI Assistant"
       >
         {/* Pulsing rings behind the button */}
         <span className="absolute inset-0 rounded-full bg-blue-400 opacity-30 animate-ping" style={{ animationDuration: '3s' }}></span>
@@ -76,20 +76,29 @@ const Chatbot = () => {
         )}
       </motion.button>
 
-      {/* Chat Window */}
+      {/* Chat Window & Mobile Backdrop */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 30, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 30, scale: 0.95 }}
-            className="fixed bottom-18 sm:bottom-24 right-3 sm:right-6 w-[340px] max-w-[calc(100vw-1.5rem)] h-[480px] max-h-[75vh] rounded-2xl flex flex-col z-50 shadow-[0_0_40px_rgba(37,99,235,0.2)] overflow-hidden"
-            style={{ 
-              background: 'var(--bg-card)', 
-              border: '1px solid var(--border-card)',
-              backdropFilter: 'blur(20px)'
-            }}
-          >
+          <>
+            {/* Click-outside Backdrop on mobile */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 z-[140] bg-black/30 backdrop-blur-[2px] sm:hidden"
+            />
+
+            <motion.div
+              initial={{ opacity: 0, y: 25, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 25, scale: 0.95 }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              className="fixed bottom-20 sm:bottom-24 right-3 sm:right-6 w-[350px] max-w-[calc(100vw-1.5rem)] h-[490px] max-h-[75vh] rounded-3xl flex flex-col z-[150] shadow-2xl overflow-hidden bg-white dark:bg-[#0B0F19] border border-slate-200 dark:border-slate-800"
+              style={{ 
+                boxShadow: '0 20px 60px rgba(0, 0, 0, 0.35)'
+              }}
+            >
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b" style={{ borderColor: 'var(--border-subtle)' }}>
               <div className="flex items-center gap-2">
@@ -168,6 +177,7 @@ const Chatbot = () => {
               </button>
             </form>
           </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>
