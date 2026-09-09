@@ -45,7 +45,7 @@ const Chatbot = () => {
         initial={{ scale: 0 }}
         animate={{ 
           scale: 1,
-          y: [0, -10, 0] // Floating animation
+          y: [0, -6, 0] // Gentle floating animation
         }}
         transition={{ 
           scale: { delay: 2, type: 'spring' },
@@ -53,24 +53,25 @@ const Chatbot = () => {
         }}
         onMouseEnter={playHover}
         onClick={() => { playClick(); setIsOpen(true); }}
-        className="fixed bottom-6 right-6 w-16 h-16 rounded-full flex items-center justify-center text-white shadow-2xl z-[90] overflow-visible group cursor-pointer hover:scale-105"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-white shadow-2xl z-40 overflow-visible group cursor-pointer hover:scale-105 active:scale-95"
         style={{ padding: 0 }}
+        aria-label="Open AI Assistant"
       >
         {/* Pulsing rings behind the button */}
-        <span className="absolute inset-0 rounded-full bg-blue-400 opacity-40 animate-ping" style={{ animationDuration: '3s' }}></span>
-        <span className="absolute inset-[-4px] rounded-full bg-cyan-400 opacity-20 animate-pulse"></span>
+        <span className="absolute inset-0 rounded-full bg-blue-400 opacity-30 animate-ping" style={{ animationDuration: '3s' }}></span>
+        <span className="absolute inset-[-3px] rounded-full bg-cyan-400 opacity-20 animate-pulse"></span>
         
         {/* Button Content */}
-        <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/20 shadow-[0_0_20px_rgba(6,182,212,0.5)]">
+        <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/20 shadow-[0_0_15px_rgba(6,182,212,0.4)]">
           <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
           <img src="/chatbot-icon.png" alt="AI Chatbot" className="w-full h-full object-cover relative z-0" />
         </div>
         
         {/* Unread badge */}
         {!isOpen && messages.length === 1 && (
-          <span className="absolute top-0 right-0 flex h-4 w-4">
+          <span className="absolute top-0 right-0 flex h-3.5 w-3.5">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-4 w-4 bg-red-500 border-2 border-slate-900"></span>
+            <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-red-500 border-2 border-slate-900"></span>
           </span>
         )}
       </motion.button>
@@ -79,10 +80,10 @@ const Chatbot = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            initial={{ opacity: 0, y: 30, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 50, scale: 0.9 }}
-            className="fixed bottom-24 right-4 sm:right-6 w-[350px] max-w-[calc(100vw-2rem)] h-[500px] max-h-[70vh] rounded-2xl flex flex-col z-[100] shadow-[0_0_40px_rgba(37,99,235,0.15)] overflow-hidden"
+            exit={{ opacity: 0, y: 30, scale: 0.95 }}
+            className="fixed bottom-18 sm:bottom-24 right-3 sm:right-6 w-[340px] max-w-[calc(100vw-1.5rem)] h-[480px] max-h-[75vh] rounded-2xl flex flex-col z-50 shadow-[0_0_40px_rgba(37,99,235,0.2)] overflow-hidden"
             style={{ 
               background: 'var(--bg-card)', 
               border: '1px solid var(--border-card)',

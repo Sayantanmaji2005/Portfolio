@@ -522,7 +522,7 @@ export default function ProjectPresentationModal({ isOpen, onClose, project }) {
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 md:p-8">
+      <div className="fixed inset-0 z-[120] flex items-center justify-center p-3 sm:p-6 md:p-8">
         {/* Backdrop (Dark in dark mode, softly tinted blur in light mode) */}
         <motion.div
           initial={{ opacity: 0 }}
