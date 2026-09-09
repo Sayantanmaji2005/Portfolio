@@ -25,7 +25,7 @@ const Experience = () => {
         'Developed skills in AI solution design, prompt engineering, workflow automation, innovation, and solving real-world engineering problems using artificial intelligence technologies.'
       ],
       skills: ['Artificial Intelligence', 'Machine Learning', 'Prompt Engineering', 'Generative AI', 'ChatGPT', 'Claude AI'],
-      certificateUrl: 'AI_Builder_Certificate.pdf'
+      certificateUrl: '/AI_Builder_Certificate.pdf'
     },
     {
       company: 'CDAC',
@@ -40,7 +40,7 @@ const Experience = () => {
         'Focused on improving development skills and building innovative projects that solve real-world problems.'
       ],
       skills: ['HTML5', 'React.js', 'JavaScript', 'MongoDB', 'CSS', 'Express.js', 'Node.js'],
-      certificateUrl: '#'
+      certificateUrl: '/CDAC_Certificate.jpeg'
     }
   ];
 
@@ -158,7 +158,9 @@ const Experience = () => {
                 <div className="mt-5 pt-4 border-t border-slate-200 dark:border-white/10 flex flex-col items-start">
                   <a
                     href={exp.certificateUrl}
-                    download={exp.certificateUrl !== '#' ? 'CDAC_Internship_Certificate.pdf' : undefined}
+                    download={exp.certificateUrl !== '#' ? `${exp.company.replace(/\s+/g, '_')}_Certificate` : undefined}
+                    target={exp.certificateUrl !== '#' ? "_blank" : undefined}
+                    rel="noopener noreferrer"
                     onClick={(e) => {
                       if (exp.certificateUrl === '#') {
                         e.preventDefault();

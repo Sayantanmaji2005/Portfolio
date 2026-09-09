@@ -80,7 +80,9 @@ const EducationItem = ({ institution, degree, year, grade, index, certificateUrl
             <div className={`mt-4 flex flex-col ${isEven ? 'items-start' : 'md:items-end'}`}>
               <a
                 href={certificateUrl}
-                download={certificateUrl !== '#' ? 'Certificate.pdf' : undefined}
+                download={certificateUrl !== '#' ? 'Certificate' : undefined}
+                target={certificateUrl !== '#' ? "_blank" : undefined}
+                rel="noopener noreferrer"
                 onClick={(e) => {
                   if (certificateUrl === '#') {
                     e.preventDefault();
@@ -136,7 +138,7 @@ const Education = () => {
       degree: 'Full Stack MERN Developer Certification',
       year: 'January 2026',
       grade: 'Completed MERN Specialization',
-      certificateUrl: '#'
+      certificateUrl: '/CDAC_Certificate.jpeg'
     },
     {
       institution: 'Haldia Institute of Technology',
