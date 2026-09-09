@@ -373,16 +373,17 @@ const Skills = () => {
             <button
               type="button"
               key={tab.id}
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 setActiveTab(tab.id);
                 const firstSkill = tab.id === 'all' 
                   ? skillsDatabase[0] 
                   : (skillsDatabase.find(s => s.category === tab.id) || skillsDatabase[0]);
                 if (firstSkill) setSelectedSkill(firstSkill);
               }}
-              className={`flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer shrink-0 ${
+              className={`flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer shrink-0 ${
                 activeTab === tab.id
-                  ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30'
+                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30 scale-[1.02]'
                   : 'text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-300/50 dark:hover:bg-slate-800/50'
               }`}
             >
@@ -396,7 +397,7 @@ const Skills = () => {
       {/* ─────────────────────────────────────────────────────────────
           MAIN DUAL-PANEL ARCHITECTURE LAYOUT
          ───────────────────────────────────────────────────────────── */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start min-h-[580px]">
         
         {/* LEFT PANEL (7 Cols): Interactive Animated Skills Grid */}
         <div className="lg:col-span-7 space-y-4">
@@ -404,71 +405,71 @@ const Skills = () => {
             <span className="text-xs font-mono font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
               Select or Hover Any Technology ({filteredSkills.length})
             </span>
-            <span className="text-xs font-mono text-blue-600 dark:text-blue-400 font-semibold">
-              ● Live Architecture Links
+            <span className="text-xs font-mono text-blue-600 dark:text-blue-400 font-semibold flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-blue-500 animate-ping" />
+              Live Architecture Links
             </span>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3.5 min-h-[380px] content-start">
-            <AnimatePresence mode="popLayout">
-              {filteredSkills.map((skill, index) => {
-                const isSelected = selectedSkill.id === skill.id;
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3.5 min-h-[540px] content-start">
+            {filteredSkills.map((skill, index) => {
+              const isSelected = selectedSkill.id === skill.id;
 
-                return (
-                  <motion.div
-                    key={skill.id}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.2 }}
-                    whileHover={{ scale: 1.02, y: -2 }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={() => setSelectedSkill(skill)}
-                    onMouseEnter={() => {
-                      setHoveredSkillId(skill.id);
-                      setSelectedSkill(skill);
-                    }}
-                    onMouseLeave={() => setHoveredSkillId(null)}
-                    className={`relative p-3 sm:p-4 rounded-2xl border transition-all cursor-pointer overflow-hidden ${
-                      isSelected
-                        ? 'bg-blue-50/90 dark:bg-slate-900/95 border-blue-500 shadow-lg shadow-blue-500/20'
-                        : 'bg-white dark:bg-slate-900/60 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 shadow-sm'
-                    }`}
-                  >
-                    {/* Active Accent Bar */}
-                    {isSelected && (
-                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500" />
-                    )}
+              return (
+                <div
+                  key={skill.id}
+                  onClick={() => setSelectedSkill(skill)}
+                  onMouseEnter={() => {
+                    setHoveredSkillId(skill.id);
+                    setSelectedSkill(skill);
+                  }}
+                  onMouseLeave={() => setHoveredSkillId(null)}
+                  className={`relative p-3.5 sm:p-4 rounded-2xl border transition-all duration-300 cursor-pointer overflow-hidden transform hover:-translate-y-1 ${
+                    isSelected
+                      ? 'bg-blue-50/95 dark:bg-slate-900/95 border-blue-500 ring-2 ring-blue-500/40 shadow-xl shadow-blue-500/25 scale-[1.01]'
+                      : 'bg-white dark:bg-slate-900/60 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 shadow-sm'
+                  }`}
+                >
+                  {/* Glowing Top Accent Bar */}
+                  {isSelected && (
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-sky-400 to-indigo-500 animate-pulse" />
+                  )}
 
-                    <div className="flex items-start justify-between mb-2.5 sm:mb-3">
-                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-100 dark:bg-slate-800/80 flex items-center justify-center text-lg sm:text-xl shadow-inner border border-slate-200 dark:border-slate-700">
-                        {skill.icon}
-                      </div>
-
-                      <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
-                        {skill.proficiency}%
-                      </span>
+                  <div className="flex items-start justify-between mb-2.5 sm:mb-3">
+                    <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center text-lg sm:text-xl transition-transform duration-300 ${isSelected ? 'scale-110 shadow-md bg-blue-500/15' : 'bg-slate-100 dark:bg-slate-800/80 shadow-inner border border-slate-200 dark:border-slate-700'}`}>
+                      {skill.icon}
                     </div>
 
-                    <h4 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white tracking-tight mb-1 truncate">
-                      {skill.name}
-                    </h4>
+                    <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-full border transition-colors ${isSelected ? 'bg-blue-600 text-white border-blue-500 shadow-sm' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700'}`}>
+                      {skill.proficiency}%
+                    </span>
+                  </div>
 
-                    <p className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 font-mono truncate">
-                      {skill.experience}
-                    </p>
+                  <h4 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white tracking-tight mb-0.5 truncate">
+                    {skill.name}
+                  </h4>
 
-                    {/* Animated Micro Progress Bar */}
-                    <div className="mt-2.5 sm:mt-3 w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                      <div
-                        className="h-full rounded-full transition-all duration-500"
-                        style={{ background: skill.color || '#3B82F6', width: `${skill.proficiency}%` }}
-                      />
+                  <p className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 font-mono truncate">
+                    {skill.experience}
+                  </p>
+
+                  {/* Enhanced Animated Pulsing Progress Bar */}
+                  <div className="mt-3 w-full bg-slate-100 dark:bg-slate-800/80 h-1.5 rounded-full overflow-hidden relative">
+                    <div
+                      className="h-full rounded-full transition-all duration-700 relative overflow-hidden"
+                      style={{ 
+                        background: skill.color || '#3B82F6', 
+                        width: `${skill.proficiency}%`,
+                        boxShadow: isSelected ? `0 0 10px ${skill.color || '#3B82F6'}` : 'none'
+                      }}
+                    >
+                      {/* Shimmer Light Beam Effect */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-[shimmer_2s_infinite]" />
                     </div>
-                  </motion.div>
-                );
-              })}
-            </AnimatePresence>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
 

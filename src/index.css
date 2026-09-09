@@ -95,6 +95,11 @@ html.dark .bg-dark-only { display: block; }
   100% { clip: rect(38px, 9999px, 49px, 0); }
 }
 
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
 /* ============================================================
    AURA ORB ANIMATIONS
    ============================================================ */
