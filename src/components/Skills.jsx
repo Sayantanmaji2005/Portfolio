@@ -8,11 +8,12 @@ import {
   FiSliders, FiExternalLink, FiStar, FiCompass, FiAward, FiCheck, FiCopy
 } from 'react-icons/fi';
 import { 
-  SiReact, SiNextdotjs, SiTailwindcss, SiJavascript, 
+  SiReact, SiTailwindcss, SiJavascript, 
   SiVite, SiNodedotjs, SiExpress, SiMongodb, SiPostgresql, 
-  SiRedis, SiDocker, SiGit, SiVercel, SiPython, SiCplusplus, 
+  SiGit, SiVercel, SiPython, SiCplusplus, 
   SiSupabase, SiHtml5
 } from 'react-icons/si';
+import { FaJava } from 'react-icons/fa6';
 
 const skillsDatabase = [
   // ── Frontend ──
@@ -26,25 +27,10 @@ const skillsDatabase = [
     color: '#61DAFB',
     accentGradient: 'from-[#61DAFB] via-[#38BDF8] to-[#2563EB]',
     experience: 'Production Ready',
-    appliedIn: 'LabIntel LIMS, Portfolio, Bookstore',
+    appliedIn: 'LabIntel LIMS, SeedMart, Bookstore',
     tagline: 'Reactive component trees, custom hooks, and concurrent UI rendering',
     concepts: ['Custom Hooks', 'Context API', 'Performance Optimization', 'Zustand State', 'Virtual DOM'],
     snippet: 'const [state, dispatch] = useReducer(reducer, initialState);'
-  },
-  {
-    id: 'nextjs',
-    name: 'Next.js',
-    category: 'frontend',
-    level: 'Advanced',
-    proficiency: 88,
-    icon: <SiNextdotjs className="text-slate-900 dark:text-white" />,
-    color: '#8B5CF6',
-    accentGradient: 'from-[#8B5CF6] via-[#A855F7] to-[#EC4899]',
-    experience: 'Full-Stack SSR',
-    appliedIn: 'Server-Rendered Architectures & Dashboards',
-    tagline: 'App router, Server Components, API routes, and optimized SEO rendering',
-    concepts: ['Server Components', 'SSR & SSG', 'Route Handlers', 'Edge Middleware', 'Image Optimization'],
-    snippet: 'export default async function Page() { const data = await fetch(); }'
   },
   {
     id: 'tailwind',
@@ -56,25 +42,25 @@ const skillsDatabase = [
     color: '#38BDF8',
     accentGradient: 'from-[#38BDF8] via-[#06B6D4] to-[#0284C7]',
     experience: 'Design Systems',
-    appliedIn: 'All Web Platforms & Portals',
+    appliedIn: 'LabIntel, SeedMart, Portfolio UI',
     tagline: 'Utility-first modern styling, dark mode engines, and responsive glassmorphism',
     concepts: ['Custom Design Tokens', 'Fluid Typography', 'Glassmorphism', 'Dark Mode Sync', 'Micro-Animations'],
     snippet: '@apply backdrop-blur-xl bg-slate-900/80 border border-white/10;'
   },
   {
-    id: 'javascript',
-    name: 'JavaScript (ES6+)',
-    category: 'languages',
+    id: 'html-css',
+    name: 'HTML5 & CSS3',
+    category: 'frontend',
     level: 'Expert',
-    proficiency: 94,
-    icon: <SiJavascript className="text-[#F7DF1E]" />,
-    color: '#F7DF1E',
-    accentGradient: 'from-[#F7DF1E] via-[#FBBF24] to-[#EA580C]',
-    experience: 'Core Engine',
-    appliedIn: 'Full-Stack JavaScript Ecosystem',
-    tagline: 'Asynchronous event loops, functional closures, prototypes, and DOM APIs',
-    concepts: ['Async/Await & Promises', 'Event Loop', 'Closures & Scopes', 'Prototypes', 'Modular Architecture'],
-    snippet: 'const pipeline = async (data) => await Promise.all(tasks.map(run));'
+    proficiency: 95,
+    icon: <SiHtml5 className="text-[#E34F26]" />,
+    color: '#E34F26',
+    accentGradient: 'from-[#E34F26] via-[#F97316] to-[#EF4444]',
+    experience: 'Semantic Foundation',
+    appliedIn: 'All 4 Projects & Medical Print Layouts',
+    tagline: 'Accessible semantic structures, CSS Grid, Flexbox, and Print CSS stylesheets',
+    concepts: ['Semantic HTML5', 'CSS Grid & Flexbox', 'Print Stylesheets', 'Accessibility (ARIA)', 'CSS Variables'],
+    snippet: '@media print { body { visibility: visible !important; } }'
   },
   {
     id: 'vite',
@@ -91,52 +77,22 @@ const skillsDatabase = [
     concepts: ['Native ESM', 'HMR Engine', 'Rollup Plugins', 'Tree Shaking', 'Asset Inlining'],
     snippet: 'export default defineConfig({ plugins: [react(), tailwindcss()] });'
   },
-  {
-    id: 'html-css',
-    name: 'HTML5 & CSS3',
-    category: 'frontend',
-    level: 'Expert',
-    proficiency: 95,
-    icon: <SiHtml5 className="text-[#E34F26]" />,
-    color: '#E34F26',
-    accentGradient: 'from-[#E34F26] via-[#F97316] to-[#EF4444]',
-    experience: 'Semantic Foundation',
-    appliedIn: 'All Interfaces & Medical Print Layouts',
-    tagline: 'Accessible semantic structures, CSS Grid, Flexbox, and Print CSS stylesheets',
-    concepts: ['Semantic HTML5', 'CSS Grid & Flexbox', 'Print Stylesheets', 'Accessibility (ARIA)', 'CSS Variables'],
-    snippet: '@media print { body { visibility: visible !important; } }'
-  },
 
-  // ── Backend & AI ──
+  // ── Languages ──
   {
-    id: 'nodejs',
-    name: 'Node.js',
-    category: 'backend',
-    level: 'Advanced',
-    proficiency: 92,
-    icon: <SiNodedotjs className="text-[#339933]" />,
-    color: '#339933',
-    accentGradient: 'from-[#339933] via-[#22C55E] to-[#16A34A]',
-    experience: 'Microservices & APIs',
-    appliedIn: 'LabIntel LIMS, Clinical AI Backend',
-    tagline: 'High-throughput event-driven servers, non-blocking I/O, and RESTful APIs',
-    concepts: ['Event-Driven Architecture', 'Cluster Mode', 'Streams & Buffers', 'Middleware Pipelines', 'Security Hardening'],
-    snippet: 'const server = createServer(async (req, res) => { ... });'
-  },
-  {
-    id: 'express',
-    name: 'Express.js',
-    category: 'backend',
+    id: 'javascript',
+    name: 'JavaScript (ES6+)',
+    category: 'languages',
     level: 'Expert',
-    proficiency: 93,
-    icon: <SiExpress className="text-slate-800 dark:text-slate-200" />,
-    color: '#64748B',
-    accentGradient: 'from-[#64748B] via-[#475569] to-[#334155]',
-    experience: 'REST Endpoints',
-    appliedIn: 'LIMS Core Server, Authentication Services',
-    tagline: 'Robust routing, error interception, rate limiting, and JWT authentication',
-    concepts: ['Router Pipelines', 'Global Error Handling', 'Rate Limiting', 'CORS & Helmet', 'Validation Middleware'],
-    snippet: 'app.use("/api/v1/patients", authMiddleware, patientRouter);'
+    proficiency: 94,
+    icon: <SiJavascript className="text-[#F7DF1E]" />,
+    color: '#F7DF1E',
+    accentGradient: 'from-[#F7DF1E] via-[#FBBF24] to-[#EA580C]',
+    experience: 'Core Engine',
+    appliedIn: 'Full-Stack JavaScript Ecosystem',
+    tagline: 'Asynchronous event loops, functional closures, prototypes, and DOM APIs',
+    concepts: ['Async/Await & Promises', 'Event Loop', 'Closures & Scopes', 'Prototypes', 'Modular Architecture'],
+    snippet: 'const pipeline = async (data) => await Promise.all(tasks.map(run));'
   },
   {
     id: 'python',
@@ -148,10 +104,25 @@ const skillsDatabase = [
     color: '#3776AB',
     accentGradient: 'from-[#3776AB] via-[#38BDF8] to-[#FCD34D]',
     experience: 'AI & Data Scripts',
-    appliedIn: 'Clinical Co-Pilot Inference, Automation',
-    tagline: 'AI integrations, data pipelines, automated testing, and algorithmic tasks',
-    concepts: ['LLM Orchestration', 'Data Pipelines', 'Automation Scripts', 'Object Oriented Python', 'FastAPI/Flask Basics'],
+    appliedIn: 'LabIntel AI Clinical Co-Pilot',
+    tagline: 'AI integrations, prompt orchestration, data pipelines, and algorithmic tasks',
+    concepts: ['LLM Orchestration', 'Data Pipelines', 'Automation Scripts', 'Object Oriented Python', 'API Integrations'],
     snippet: 'def analyze_medical_telemetry(data: dict) -> ClinicalReport: ...'
+  },
+  {
+    id: 'java',
+    name: 'Java',
+    category: 'languages',
+    level: 'Advanced',
+    proficiency: 85,
+    icon: <FaJava className="text-[#EA2D2E]" />,
+    color: '#EA2D2E',
+    accentGradient: 'from-[#EA2D2E] via-[#F87171] to-[#DC2626]',
+    experience: 'OOP & Core CS',
+    appliedIn: 'Object-Oriented Programming & Fundamentals',
+    tagline: 'Object-oriented design patterns, multithreading, collections framework, and JVM memory',
+    concepts: ['OOP Principles', 'Collections Framework', 'Exception Handling', 'Multithreading', 'Generics'],
+    snippet: 'public class Main { public static void main(String[] args) { ... } }'
   },
   {
     id: 'cpp',
@@ -169,6 +140,53 @@ const skillsDatabase = [
     snippet: 'std::vector<int> adjList[MAX_NODES];'
   },
 
+  // ── Backend & AI ──
+  {
+    id: 'nodejs',
+    name: 'Node.js',
+    category: 'backend',
+    level: 'Advanced',
+    proficiency: 92,
+    icon: <SiNodedotjs className="text-[#339933]" />,
+    color: '#339933',
+    accentGradient: 'from-[#339933] via-[#22C55E] to-[#16A34A]',
+    experience: 'Microservices & APIs',
+    appliedIn: 'LabIntel LIMS, SeedMart, Bookstore',
+    tagline: 'High-throughput event-driven servers, non-blocking I/O, and RESTful APIs',
+    concepts: ['Event-Driven Architecture', 'Cluster Mode', 'Streams & Buffers', 'Middleware Pipelines', 'Security Hardening'],
+    snippet: 'const server = createServer(async (req, res) => { ... });'
+  },
+  {
+    id: 'express',
+    name: 'Express.js',
+    category: 'backend',
+    level: 'Expert',
+    proficiency: 93,
+    icon: <SiExpress className="text-slate-800 dark:text-slate-200" />,
+    color: '#64748B',
+    accentGradient: 'from-[#64748B] via-[#475569] to-[#334155]',
+    experience: 'REST Endpoints',
+    appliedIn: 'LIMS Core Server, SeedMart & Bookstore APIs',
+    tagline: 'Robust routing, error interception, rate limiting, and JWT authentication',
+    concepts: ['Router Pipelines', 'Global Error Handling', 'Rate Limiting', 'CORS & Helmet', 'Validation Middleware'],
+    snippet: 'app.use("/api/v1/patients", authMiddleware, patientRouter);'
+  },
+  {
+    id: 'rest-api',
+    name: 'RESTful API Design',
+    category: 'backend',
+    level: 'Expert',
+    proficiency: 94,
+    icon: <FiServer className="text-[#14B8A6]" />,
+    color: '#14B8A6',
+    accentGradient: 'from-[#14B8A6] via-[#2DD4BF] to-[#0F766E]',
+    experience: 'Protocol Architecture',
+    appliedIn: 'All 4 Production Project Endpoints',
+    tagline: 'HTTP status semantics, idempotent methods, JSON schemas, and secure payloads',
+    concepts: ['HTTP Verbs & Status', 'JSON Schemas', 'Payload Validation', 'Error Standards', 'Pagination'],
+    snippet: 'GET /api/v1/labs/:id/telemetry?page=1&limit=20'
+  },
+
   // ── Databases ──
   {
     id: 'mongodb',
@@ -180,10 +198,10 @@ const skillsDatabase = [
     color: '#47A248',
     accentGradient: 'from-[#47A248] via-[#22C55E] to-[#15803D]',
     experience: 'NoSQL Schema Design',
-    appliedIn: 'Patient Records, Test Catalogs, Audit Logs',
+    appliedIn: 'SeedMart & Bookstore Catalogs & Orders',
     tagline: 'Aggregation pipelines, compound indexes, Mongoose schemas, and sharded collections',
     concepts: ['Aggregation Framework', 'Compound Indexing', 'Schema Validation', 'Replica Sets', 'Transactions'],
-    snippet: 'await Patient.aggregate([{ $match: { status: "critical" } }, { $group: ... }]);'
+    snippet: 'await Order.aggregate([{ $match: { status: "completed" } }, { $group: ... }]);'
   },
   {
     id: 'postgresql',
@@ -195,7 +213,7 @@ const skillsDatabase = [
     color: '#4169E1',
     accentGradient: 'from-[#4169E1] via-[#6366F1] to-[#3B82F6]',
     experience: 'Relational DB',
-    appliedIn: 'Structured Data Storage & Analytics',
+    appliedIn: 'LabIntel Multi-Tenant Pathology Data',
     tagline: 'ACID compliance, relational normalization, complex joins, and indexed queries',
     concepts: ['Relational Schemas', 'Foreign Keys & Constraints', 'ACID Transactions', 'EXPLAIN ANALYZE', 'JSONB Storage'],
     snippet: 'SELECT p.name, t.result FROM patients p JOIN tests t ON p.id = t.patient_id;'
@@ -210,43 +228,13 @@ const skillsDatabase = [
     color: '#3ECF8E',
     accentGradient: 'from-[#3ECF8E] via-[#10B981] to-[#047857]',
     experience: 'Backend-as-a-Service',
-    appliedIn: 'Realtime Subscriptions & Auth Vaults',
+    appliedIn: 'LabIntel Realtime Subscriptions & RLS',
     tagline: 'Postgres backend, Row-Level Security (RLS), Realtime WebSocket listeners, and Storage',
     concepts: ['Row-Level Security (RLS)', 'Realtime WebSockets', 'Postgres Functions', 'Edge Functions', 'Auth Policies'],
     snippet: 'supabase.channel("live-tests").on("postgres_changes", { event: "*" }, handle);'
   },
-  {
-    id: 'redis',
-    name: 'Redis',
-    category: 'database',
-    level: 'Intermediate',
-    proficiency: 80,
-    icon: <SiRedis className="text-[#DC382D]" />,
-    color: '#DC382D',
-    accentGradient: 'from-[#DC382D] via-[#EF4444] to-[#B91C1C]',
-    experience: 'In-Memory Cache',
-    appliedIn: 'Session Storage, Rate Limiting, High-Speed Cache',
-    tagline: 'Sub-millisecond key-value retrieval, pub/sub channels, and cache eviction strategies',
-    concepts: ['Key Expiration (TTL)', 'Cache-Aside Pattern', 'Pub/Sub Messaging', 'Rate Limit Counters', 'Hash Structures'],
-    snippet: 'await redis.setex(`cache:user:${id}`, 3600, JSON.stringify(userData));'
-  },
 
   // ── DevOps & Cloud ──
-  {
-    id: 'docker',
-    name: 'Docker',
-    category: 'devops',
-    level: 'Intermediate',
-    proficiency: 80,
-    icon: <SiDocker className="text-[#2496ED]" />,
-    color: '#2496ED',
-    accentGradient: 'from-[#2496ED] via-[#38BDF8] to-[#0284C7]',
-    experience: 'Containerization',
-    appliedIn: 'Microservices & Containerized Deployments',
-    tagline: 'Containerized environments, Dockerfile blueprints, and isolated service stacks',
-    concepts: ['Dockerfiles', 'Image Layering', 'Port Mapping', 'Volume Mounts', 'Container Lifecycle'],
-    snippet: 'FROM node:20-alpine AS runner\nWORKDIR /app\nCMD ["node", "server.js"]'
-  },
   {
     id: 'git',
     name: 'Git & GitHub',
@@ -257,7 +245,7 @@ const skillsDatabase = [
     color: '#F05032',
     accentGradient: 'from-[#F05032] via-[#FB7185] to-[#DC2626]',
     experience: 'Version Control',
-    appliedIn: 'Continuous Team Collaboration & CI/CD',
+    appliedIn: 'All 4 Repositories & Collaboration',
     tagline: 'Branching workflows, merge conflict resolution, CI/CD automation, and release tags',
     concepts: ['Feature Branching', 'Rebasing & Merging', 'Pull Requests', 'Git Hooks', 'Release Tagging'],
     snippet: 'git checkout -b feature/architect-v2 && git commit -m "feat: complete"'
@@ -272,7 +260,7 @@ const skillsDatabase = [
     color: '#06B6D4',
     accentGradient: 'from-[#06B6D4] via-[#38BDF8] to-[#0284C7]',
     experience: 'Serverless Hosting',
-    appliedIn: 'Live Project Deployments',
+    appliedIn: 'Live Project Deployments (4 Active)',
     tagline: 'Edge network deployments, automated Git continuous deployment, and DNS routing',
     concepts: ['Edge Network', 'Serverless Functions', 'Custom Domains', 'Environment Vaults', 'Build Caching'],
     snippet: 'export const config = { runtime: "edge", regions: ["bom1"] };'
@@ -295,36 +283,6 @@ const skillsDatabase = [
     snippet: 'const lowestCommonAncestor = (root, p, q) => { ... };'
   },
   {
-    id: 'system-design',
-    name: 'System Design',
-    category: 'core-cs',
-    level: 'Advanced',
-    proficiency: 88,
-    icon: <FiLayers className="text-[#3B82F6]" />,
-    color: '#3B82F6',
-    accentGradient: 'from-[#3B82F6] via-[#60A5FA] to-[#1D4ED8]',
-    experience: 'Architecture',
-    appliedIn: 'Multi-Tenant SaaS & Scalable Web APIs',
-    tagline: 'Scalable client-server architectures, database partitioning, caching, and RBAC',
-    concepts: ['Multi-Tenancy', 'RBAC Security', 'Horizontal Scaling', 'Load Balancing', 'API Gateways'],
-    snippet: 'Client -> CDN -> API Gateway -> Microservices -> Sharded DB'
-  },
-  {
-    id: 'rest-api',
-    name: 'RESTful API Design',
-    category: 'core-cs',
-    level: 'Expert',
-    proficiency: 94,
-    icon: <FiServer className="text-[#14B8A6]" />,
-    color: '#14B8A6',
-    accentGradient: 'from-[#14B8A6] via-[#2DD4BF] to-[#0F766E]',
-    experience: 'Protocol Architecture',
-    appliedIn: 'All Full-Stack Services & Endpoints',
-    tagline: 'HTTP status semantics, idempotent methods, JSON schemas, and secure payloads',
-    concepts: ['HTTP Verbs & Status', 'JSON Schemas', 'Payload Validation', 'Error Standards', 'Pagination'],
-    snippet: 'GET /api/v1/labs/:id/telemetry?page=1&limit=20'
-  },
-  {
     id: 'web-security',
     name: 'Web Security & JWT',
     category: 'core-cs',
@@ -334,7 +292,7 @@ const skillsDatabase = [
     color: '#EC4899',
     accentGradient: 'from-[#EC4899] via-[#F472B6] to-[#BE185D]',
     experience: 'Auth & Protection',
-    appliedIn: 'Dual Auth Portals & RLS Gateways',
+    appliedIn: 'LabIntel & SeedMart Auth Pipelines',
     tagline: 'JSON Web Token lifecycles, hashing (bcrypt), XSS/CSRF mitigation, and RLS',
     concepts: ['JWT Signatures & Refresh', 'Bcrypt Hashing', 'CORS Mitigation', 'SQL Injection Defense', 'RBAC'],
     snippet: 'const token = jwt.sign({ sub: userId, role: "doctor" }, SECRET, { expiresIn: "1h" });'
@@ -344,11 +302,11 @@ const skillsDatabase = [
 const categoryTabs = [
   { id: 'all', label: 'All Technologies', icon: <FiStar /> },
   { id: 'frontend', label: 'Frontend', icon: <FiLayout /> },
-  { id: 'backend', label: 'Backend & AI', icon: <FiServer /> },
-  { id: 'database', label: 'Databases & Caching', icon: <FiDatabase /> },
   { id: 'languages', label: 'Languages', icon: <FiCode /> },
-  { id: 'devops', label: 'Cloud & DevOps', icon: <FiCloud /> },
-  { id: 'core-cs', label: 'Core CS & System Design', icon: <FiShield /> }
+  { id: 'backend', label: 'Backend & APIs', icon: <FiServer /> },
+  { id: 'database', label: 'Databases', icon: <FiDatabase /> },
+  { id: 'devops', label: 'Cloud & Tools', icon: <FiCloud /> },
+  { id: 'core-cs', label: 'Core CS & Security', icon: <FiShield /> }
 ];
 
 const Skills = () => {

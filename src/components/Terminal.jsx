@@ -57,24 +57,24 @@ const Terminal = () => {
         <p className="text-[#38BDF8] font-bold font-mono text-sm">&gt; skills --list</p>
         <div className="pl-3 space-y-2.5">
           <div>
-            <span className="text-[#38BDF8] block font-semibold mb-0.5">// AI & LLM Systems</span>
-            <p className="text-[#94A3B8]">Groq API, Llama 3, Agent Workflows</p>
+            <span className="text-[#38BDF8] block font-semibold mb-0.5">// Core Languages</span>
+            <p className="text-[#94A3B8]">JavaScript (ES6+), Python, Java, C/C++</p>
           </div>
           <div>
             <span className="text-[#38BDF8] block font-semibold mb-0.5">// Frontend</span>
-            <p className="text-[#94A3B8]">React.js, HTML5, CSS3, JS (ES6+), Vite, Tailwind</p>
+            <p className="text-[#94A3B8]">React.js, HTML5, CSS3, Tailwind CSS, Vite</p>
           </div>
           <div>
-            <span className="text-[#38BDF8] block font-semibold mb-0.5">// Backend & Auth</span>
+            <span className="text-[#38BDF8] block font-semibold mb-0.5">// Backend & APIs</span>
             <p className="text-[#94A3B8]">Node.js, Express.js, JWT, RESTful APIs</p>
           </div>
           <div>
-            <span className="text-[#38BDF8] block font-semibold mb-0.5">// Databases & Cache</span>
-            <p className="text-[#94A3B8]">MongoDB, PostgreSQL, Supabase, Redis</p>
+            <span className="text-[#38BDF8] block font-semibold mb-0.5">// Databases & Storage</span>
+            <p className="text-[#94A3B8]">MongoDB, PostgreSQL, Supabase (RLS)</p>
           </div>
           <div>
-            <span className="text-[#38BDF8] block font-semibold mb-0.5">// Operations & Versioning</span>
-            <p className="text-[#94A3B8]">Docker, Git, GitHub, Render, Vercel</p>
+            <span className="text-[#38BDF8] block font-semibold mb-0.5">// Cloud, Tools & CS</span>
+            <p className="text-[#94A3B8]">Git, GitHub, Vercel, Data Structures & Algorithms</p>
           </div>
         </div>
       </div>
