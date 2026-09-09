@@ -469,7 +469,7 @@ export const labintelSlides = [
             "She got home. She opened LabIntel. She understood her report. For the first time in her life."
           </p>
           <p className="text-xs text-slate-600 dark:text-slate-200">
-            Production live deployment available at <a href="https://labintelorg.vercel.app/lab/secondlab/login" target="_blank" rel="noreferrer" className="text-blue-600 dark:text-sky-300 hover:underline font-mono font-bold">labintelorg.vercel.app</a>
+            Production live deployment available at <a href="https://labintelorg.vercel.app/" target="_blank" rel="noreferrer" className="text-blue-600 dark:text-sky-300 hover:underline font-mono font-bold">labintelorg.vercel.app</a>
           </p>
         </div>
       </div>
@@ -676,7 +676,7 @@ export default function ProjectPresentationModal({ isOpen, onClose, project }) {
             {/* Action Links & Navigation Buttons */}
             <div className="flex items-center gap-3">
               <a
-                href="https://labintelorg.vercel.app/lab/secondlab/login"
+                href="https://labintelorg.vercel.app/"
                 target="_blank"
                 rel="noreferrer"
                 className="hidden sm:flex items-center gap-1.5 text-xs text-blue-600 dark:text-sky-400 hover:underline font-bold transition-colors"
