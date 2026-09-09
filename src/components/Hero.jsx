@@ -80,7 +80,9 @@ const Hero = () => {
             loop
             muted={isMuted}
             playsInline
-            className="w-full h-full object-cover brightness-105 contrast-105"
+            preload="auto"
+            className="w-full h-full object-cover brightness-[1.03] contrast-[1.1] saturate-[1.12] transform-gpu will-change-transform"
+            style={{ imageRendering: 'high-quality' }}
           />
           {/* Subtle gradient overlay to soften video edge into right panel */}
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#08090D] z-[1] hidden lg:block" />
