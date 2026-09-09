@@ -6,11 +6,12 @@ import {
   FiCpu, 
   FiFolder, 
   FiTerminal, 
-  FiGithub, 
+  FiGithub,
   FiMail, 
   FiSun, 
   FiMoon 
 } from 'react-icons/fi';
+import { FaSeedling } from 'react-icons/fa6';
 import useSoundEffects from '../hooks/useSoundEffects';
 
 const dockLinks = [
@@ -19,6 +20,7 @@ const dockLinks = [
   { id: 'skills', label: 'Skills', icon: <FiCpu /> },
   { id: 'projects', label: 'Projects', icon: <FiFolder /> },
   { id: 'terminal', label: 'Terminal', icon: <FiTerminal /> },
+  { id: 'vision', label: 'SeedMart Vision', icon: <FaSeedling /> },
   { id: 'github', label: 'GitHub', icon: <FiGithub /> },
   { id: 'contact', label: 'Contact', icon: <FiMail /> },
 ];

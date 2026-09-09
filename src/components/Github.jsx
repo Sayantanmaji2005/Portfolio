@@ -212,8 +212,7 @@ const Github = () => {
               <div className="flex items-center gap-1 p-1 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
                 {[
                   { id: 'velocity', label: 'Commit Wave', icon: <FiTrendingUp /> },
-                  { id: 'heatmap', label: 'Contribution Matrix', icon: <FiActivity /> },
-                  { id: 'repos', label: 'Live Repos', icon: <FiFolder /> }
+                  { id: 'heatmap', label: 'Contribution Matrix', icon: <FiActivity /> }
                 ].map((mode) => (
                   <button
                     key={mode.id}
@@ -351,45 +350,6 @@ const Github = () => {
                         <span>More</span>
                       </div>
                     </div>
-                  </motion.div>
-                )}
-
-                {/* 3. Live Repositories Stream */}
-                {activeTab === 'repos' && (
-                  <motion.div 
-                    key="repos"
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.98 }}
-                    transition={{ duration: 0.3 }}
-                    className="w-full grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[250px] overflow-y-auto custom-scrollbar pr-1"
-                  >
-                    {apiData.repos.slice(0, 6).map((repo) => (
-                      <a
-                        key={repo.name}
-                        href={repo.html_url || `https://github.com/Sayantanmaji2005/${repo.name}`}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-blue-500 transition-all group flex flex-col justify-between"
-                      >
-                        <div>
-                          <div className="flex items-center justify-between mb-1">
-                            <span className="font-bold text-xs text-slate-900 dark:text-white group-hover:text-blue-500 transition-colors flex items-center gap-1.5 truncate">
-                              <FiFolder className="text-blue-500 flex-shrink-0" />
-                              {repo.name}
-                            </span>
-                            <FiExternalLink className="text-slate-400 w-3 h-3 group-hover:text-blue-500" />
-                          </div>
-                          <p className="text-[10px] text-slate-500 dark:text-slate-400 line-clamp-1">
-                            {repo.description || 'Production repository codebase'}
-                          </p>
-                        </div>
-                        <div className="flex items-center justify-between text-[9px] font-mono text-slate-400 mt-2 pt-2 border-t border-slate-200 dark:border-slate-800/80">
-                          <span className="text-blue-600 dark:text-sky-400 font-bold">{repo.language || 'Codebase'}</span>
-                          <span>★ {repo.stargazers_count || 0}</span>
-                        </div>
-                      </a>
-                    ))}
                   </motion.div>
                 )}
               </AnimatePresence>

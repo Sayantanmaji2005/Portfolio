@@ -11,6 +11,7 @@ import Education from './components/Education';
 import Experience from './components/Experience';
 import Terminal from './components/Terminal';
 import Projects from './components/Projects';
+import SeedMartVision from './components/SeedMartVision';
 import Github from './components/Github';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -64,6 +65,7 @@ function App() {
             <Experience />
             <Terminal />
             <Projects />
+            <SeedMartVision />
             <Github />
             <Contact />
           </main>
