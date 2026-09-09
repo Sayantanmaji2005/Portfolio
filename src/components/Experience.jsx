@@ -1,10 +1,12 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useState, useRef } from 'react';
-import { FiBriefcase, FiCalendar, FiCheck, FiDownload } from 'react-icons/fi';
+import { FiBriefcase, FiCalendar, FiCheck, FiEye } from 'react-icons/fi';
+import CertificateModal from './CertificateModal';
 
 const Experience = () => {
   const containerRef = useRef(null);
   const [activeStatusIndex, setActiveStatusIndex] = useState(null);
+  const [selectedCert, setSelectedCert] = useState(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start center", "end center"]
@@ -25,7 +27,7 @@ const Experience = () => {
         'Developed skills in AI solution design, prompt engineering, workflow automation, innovation, and solving real-world engineering problems using artificial intelligence technologies.'
       ],
       skills: ['Artificial Intelligence', 'Machine Learning', 'Prompt Engineering', 'Generative AI', 'ChatGPT', 'Claude AI'],
-      certificateUrl: '/AI_Builder_Certificate.pdf'
+      certificateUrl: '/ai_for_everyone.jpg'
     },
     {
       company: 'CDAC',
@@ -156,23 +158,18 @@ const Experience = () => {
 
               {exp.certificateUrl && (
                 <div className="mt-5 pt-4 border-t border-slate-200 dark:border-white/10 flex flex-col items-start">
-                  <a
-                    href={exp.certificateUrl}
-                    download={exp.certificateUrl !== '#' ? `${exp.company.replace(/\s+/g, '_')}_Certificate` : undefined}
-                    target={exp.certificateUrl !== '#' ? "_blank" : undefined}
-                    rel="noopener noreferrer"
-                    onClick={(e) => {
-                      if (exp.certificateUrl === '#') {
-                        e.preventDefault();
-                        setActiveStatusIndex(index);
-                        setTimeout(() => setActiveStatusIndex(null), 4500);
-                      }
-                    }}
-                    className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-mono text-xs font-bold shadow-md transition-all cursor-pointer"
+                  <button
+                    type="button"
+                    onClick={() => setSelectedCert({
+                      title: `${exp.company} Certification`,
+                      issuer: exp.company,
+                      url: exp.certificateUrl
+                    })}
+                    className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-mono text-xs font-bold shadow-md transition-all cursor-pointer hover:scale-105"
                   >
-                    <FiDownload className="w-3.5 h-3.5" />
-                    <span>Download Certificate</span>
-                  </a>
+                    <FiEye className="w-3.5 h-3.5" />
+                    <span>View Certificate</span>
+                  </button>
 
                   {activeStatusIndex === index && (
                     <motion.div
@@ -182,7 +179,7 @@ const Experience = () => {
                       className="mt-2 text-[11px] font-mono text-amber-600 dark:text-amber-400 bg-amber-500/10 border border-amber-500/20 px-3 py-1.5 rounded-xl flex items-center gap-1.5 text-left"
                     >
                       <FiCheck className="w-3.5 h-3.5 flex-shrink-0 text-amber-500" />
-                      <span>CDAC Certificate file is being uploaded. Please check back shortly!</span>
+                      <span>Certificate document is active.</span>
                     </motion.div>
                   )}
                 </div>
@@ -191,6 +188,13 @@ const Experience = () => {
           </div>
         ))}
       </div>
+
+      {/* Certificate Read-Only Modal */}
+      <CertificateModal
+        isOpen={!!selectedCert}
+        onClose={() => setSelectedCert(null)}
+        certificate={selectedCert}
+      />
     </section>
   );
 };

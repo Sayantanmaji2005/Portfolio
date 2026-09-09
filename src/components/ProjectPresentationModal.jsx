@@ -880,7 +880,7 @@ export default function ProjectPresentationModal({ isOpen, onClose, project }) {
                 <span className="hidden md:inline">{isPlaying ? 'Pause' : 'Autoplay'}</span>
               </button>
 
-              {/* Download / Action Link */}
+              {/* Download Action Link */}
               {project?.id === 'bookstore' ? (
                 <a
                   href="/projects/bookstore/Online_Bookstore_Full_Stack_Project.pdf"

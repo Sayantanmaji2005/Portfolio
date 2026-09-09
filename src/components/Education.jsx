@@ -1,10 +1,10 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useState, useRef } from 'react';
-import { FiAward, FiCalendar, FiDownload, FiCheckCircle } from 'react-icons/fi';
+import { FiAward, FiCalendar, FiEye, FiCheckCircle } from 'react-icons/fi';
+import CertificateModal from './CertificateModal';
 
-const EducationItem = ({ institution, degree, year, grade, index, certificateUrl }) => {
+const EducationItem = ({ institution, degree, year, grade, index, certificateUrl, onViewCert }) => {
   const isEven = index % 2 === 0;
-  const [statusMsg, setStatusMsg] = useState('');
 
   return (
     <div className="relative flex flex-col md:flex-row md:justify-between items-start md:items-center mb-12 group">
@@ -78,36 +78,18 @@ const EducationItem = ({ institution, degree, year, grade, index, certificateUrl
           {/* Certificate Action */}
           {certificateUrl && (
             <div className={`mt-4 flex flex-col items-start ${isEven ? 'md:items-start' : 'md:items-end'}`}>
-              <a
-                href={certificateUrl}
-                download={certificateUrl !== '#' ? 'Certificate' : undefined}
-                target={certificateUrl !== '#' ? "_blank" : undefined}
-                rel="noopener noreferrer"
-                onClick={(e) => {
-                  if (certificateUrl === '#') {
-                    e.preventDefault();
-                    setStatusMsg('Certificate document is being updated. Please check back shortly!');
-                    setTimeout(() => setStatusMsg(''), 4500);
-                  }
-                }}
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 w-fit rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-mono text-xs font-bold shadow-md hover:shadow-sky-500/20 transition-all cursor-pointer"
+              <button
+                type="button"
+                onClick={() => onViewCert && onViewCert({
+                  title: `${institution} Certification`,
+                  issuer: institution,
+                  url: certificateUrl
+                })}
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 w-fit rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-mono text-xs font-bold shadow-md hover:shadow-sky-500/20 transition-all cursor-pointer hover:scale-105"
               >
-                <FiDownload className="w-3.5 h-3.5" />
-                <span>Verify &amp; Download</span>
-              </a>
-
-              {/* Non-blocking inline UI status message */}
-              {statusMsg && (
-                <motion.div
-                  initial={{ opacity: 0, y: 5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  className="mt-2 text-[11px] font-mono text-amber-600 dark:text-amber-400 bg-amber-500/10 border border-amber-500/20 px-3 py-1.5 rounded-xl flex items-center gap-1.5 text-left w-fit max-w-full"
-                >
-                  <FiCheckCircle className="w-3.5 h-3.5 flex-shrink-0 text-amber-500" />
-                  <span>{statusMsg}</span>
-                </motion.div>
-              )}
+                <FiEye className="w-3.5 h-3.5" />
+                <span>View Certificate</span>
+              </button>
             </div>
           )}
         </motion.div>
@@ -119,6 +101,7 @@ const EducationItem = ({ institution, degree, year, grade, index, certificateUrl
 
 const Education = () => {
   const containerRef = useRef(null);
+  const [selectedCert, setSelectedCert] = useState(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start center", "end center"]
@@ -131,7 +114,7 @@ const Education = () => {
       degree: 'Certified AI Builder (Level II) - AI for Engineers',
       year: 'May 16, 2026',
       grade: 'ID: CERT-9IB1WQ-TDMUYV',
-      certificateUrl: '/AI_Builder_Certificate.pdf'
+      certificateUrl: '/ai_for_everyone.jpg'
     },
     {
       institution: 'CDAC (Centre for Development of Advanced Computing)',
@@ -199,16 +182,20 @@ const Education = () => {
           {educationData.map((edu, index) => (
             <EducationItem
               key={index}
-              institution={edu.institution}
-              degree={edu.degree}
-              year={edu.year}
-              grade={edu.grade}
-              certificateUrl={edu.certificateUrl}
               index={index}
+              {...edu}
+              onViewCert={(cert) => setSelectedCert(cert)}
             />
           ))}
         </div>
       </div>
+
+      {/* Read-Only Certificate View Modal */}
+      <CertificateModal
+        isOpen={!!selectedCert}
+        onClose={() => setSelectedCert(null)}
+        certificate={selectedCert}
+      />
     </section>
   );
 };
