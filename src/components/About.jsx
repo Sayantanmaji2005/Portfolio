@@ -58,9 +58,60 @@ const About = () => {
       {/* Bento Grid Layout */}
       <div ref={ref} className="grid grid-cols-1 md:grid-cols-12 gap-5">
 
-        {/* ── CARD 1: Bio & Academic Journey (Span 8) ── */}
+        {/* ── CARD 0: Portrait Photo & Status (Span 4) ── */}
         <motion.div 
           custom={0} 
+          initial="hidden" 
+          animate={inView ? 'visible' : 'hidden'} 
+          variants={cardVar}
+          className="md:col-span-4 bento-card p-4 sm:p-5 flex flex-col justify-between relative overflow-hidden group min-h-[380px]"
+        >
+          {/* Glowing gradient background behind image */}
+          <div className="absolute inset-0 bg-gradient-to-br from-sky-500/10 via-indigo-500/5 to-purple-500/10 opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
+          
+          <div className="relative z-10 flex flex-col h-full justify-between space-y-4">
+            {/* Top header badge */}
+            <div className="flex items-center justify-between">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-bold bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                Available to Hire
+              </span>
+              <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400 font-semibold">
+                HIT Haldia
+              </span>
+            </div>
+
+            {/* Photo Container with Stylized Cyber Frame */}
+            <div className="relative mx-auto w-full max-w-[260px] aspect-[4/5] rounded-2xl overflow-hidden border-2 border-sky-500/30 group-hover:border-sky-400 transition-all duration-500 shadow-xl shadow-sky-500/10">
+              <img 
+                src="/sayanpic.png" 
+                alt="Sayantan Maji" 
+                className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+              
+              {/* Overlay Tag on Photo */}
+              <div className="absolute bottom-3 left-3 right-3 text-left">
+                <p className="text-white font-bold text-sm leading-tight drop-shadow-md" style={{ fontFamily: 'Syne, Outfit, sans-serif' }}>
+                  Sayantan Maji
+                </p>
+                <p className="text-sky-300 text-[11px] font-mono font-medium drop-shadow">
+                  Full Stack &amp; AI Builder
+                </p>
+              </div>
+            </div>
+
+            {/* Bottom Meta */}
+            <div className="pt-2 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-white/10">
+              <span>B.Tech CSE '27</span>
+              <span className="text-sky-600 dark:text-sky-400 font-semibold">HIT Haldia, WB</span>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* ── CARD 1: Bio & Academic Journey (Span 8) ── */}
+        <motion.div 
+          custom={1} 
           initial="hidden" 
           animate={inView ? 'visible' : 'hidden'} 
           variants={cardVar}
@@ -96,7 +147,7 @@ const About = () => {
 
         {/* ── CARD 2: Academic CGPA Callout (Span 4) ── */}
         <motion.div 
-          custom={1} 
+          custom={2} 
           initial="hidden" 
           animate={inView ? 'visible' : 'hidden'} 
           variants={cardVar}
@@ -131,7 +182,7 @@ const About = () => {
 
         {/* ── CARD 3: Core Specialization Stack (Span 4) ── */}
         <motion.div 
-          custom={2} 
+          custom={3} 
           initial="hidden" 
           animate={inView ? 'visible' : 'hidden'} 
           variants={cardVar}
@@ -159,37 +210,39 @@ const About = () => {
           </p>
         </motion.div>
 
-        {/* ── CARD 4: Milestones & Stats (Span 8) ── */}
+        {/* ── CARD 4: Milestones & Stats (Span 4) ── */}
         <motion.div 
-          custom={3} 
+          custom={4} 
           initial="hidden" 
           animate={inView ? 'visible' : 'hidden'} 
           variants={cardVar}
-          className="md:col-span-8 bento-card p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden group"
+          className="md:col-span-4 bento-card p-7 flex flex-col justify-between relative overflow-hidden group"
         >
           <div className="space-y-5 relative z-10">
             <div className="flex items-center gap-2 text-purple-600 dark:text-purple-400 font-bold text-xs uppercase tracking-widest font-mono">
               <FiCpu className="w-4 h-4" />
               <span>Milestones &amp; Impact</span>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-2">
+            <div className="space-y-4 pt-1">
               {[
                 { label: 'Internships', value: '02', sub: 'AI For Everyone & CDAC', color: 'text-sky-600 dark:text-sky-400' },
                 { label: 'AI Credentials', value: '02', sub: 'Certified AI Builder (L2)', color: 'text-emerald-600 dark:text-emerald-400' },
                 { label: 'Code Projects', value: '07+', sub: 'LIMS • MERN Stack', color: 'text-amber-600 dark:text-amber-400' },
               ].map((m) => (
-                <div key={m.label} className="space-y-1">
-                  <p className="text-xs font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold">{m.label}</p>
-                  <p className={`text-4xl sm:text-5xl font-black font-heading ${m.color}`}>
+                <div key={m.label} className="flex items-center justify-between border-b border-slate-100 dark:border-white/5 pb-2 last:border-0">
+                  <div>
+                    <p className="text-[11px] font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold">{m.label}</p>
+                    <p className="text-[11px] font-mono text-slate-600 dark:text-slate-300 font-medium">{m.sub}</p>
+                  </div>
+                  <p className={`text-2xl sm:text-3xl font-black font-heading ${m.color}`}>
                     {m.value}
                   </p>
-                  <p className="text-xs font-mono text-slate-600 dark:text-slate-300 font-medium">{m.sub}</p>
                 </div>
               ))}
             </div>
           </div>
-          <p className="text-xs font-mono text-slate-600 dark:text-slate-300 pt-4 mt-6 border-t border-slate-200 dark:border-white/10 relative z-10">
-            Hands-on team software collaboration and self-motivated open-source contribution.
+          <p className="text-xs font-mono text-slate-600 dark:text-slate-300 pt-4 mt-3 border-t border-slate-200 dark:border-white/10 relative z-10">
+            Team collaboration &amp; open-source contributions.
           </p>
         </motion.div>
 

@@ -156,20 +156,40 @@ const Hero = () => {
         {/* ── RIGHT COLUMN: Content Panel ── */}
         <div className="lg:col-span-6 flex flex-col justify-center items-start space-y-5 text-left z-20">
 
-          {/* Available badge */}
+          {/* Avatar & Available badge */}
           <motion.div
-            initial={{ opacity:0, y:-10 }} animate={{ opacity:1, y:0 }}
-            transition={{ duration:0.5 }}
-            className="flex items-center gap-2 w-fit px-3.5 py-1.5 rounded-full border border-emerald-500/30 backdrop-blur-md"
-            style={{ background: 'rgba(34, 197, 94, 0.15)' }}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex items-center gap-3.5"
           >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-            </span>
-            <span className="text-xs font-mono font-bold tracking-widest uppercase text-emerald-400">
-              Available for Opportunities
-            </span>
+            <div 
+              className="relative group cursor-pointer" 
+              onClick={() => scrollTo('about')}
+              title="Click to view full profile"
+            >
+              <div className="w-12 h-12 sm:w-13 sm:h-13 rounded-full p-[2px] bg-gradient-to-tr from-sky-400 via-indigo-500 to-emerald-400 shadow-lg shadow-sky-500/20 group-hover:scale-105 transition-transform duration-300">
+                <img 
+                  src="/sayanpic.png" 
+                  alt="Sayantan Maji" 
+                  className="w-full h-full object-cover object-top rounded-full border-2 border-[#08090D]"
+                />
+              </div>
+              <span className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-500 border-2 border-[#08090D] rounded-full animate-pulse" />
+            </div>
+
+            <div
+              className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/30 backdrop-blur-md"
+              style={{ background: 'rgba(34, 197, 94, 0.15)' }}
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+              </span>
+              <span className="text-xs font-mono font-bold tracking-widest uppercase text-emerald-400">
+                Available for Opportunities
+              </span>
+            </div>
           </motion.div>
 
           {/* Name heading */}
