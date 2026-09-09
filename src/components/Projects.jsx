@@ -114,7 +114,7 @@ const projectsList = [
     hasDeck: true,
     badge: 'Enterprise Healthcare',
     description: 'A role-based Laboratory Information Management System (LIMS) designed to digitize India’s 100,000+ independent pathology labs, reducing morning report preparation from 3 hours to 20 minutes.',
-    link: 'https://labintelorg.vercel.app/',
+    link: 'https://labintelorg.vercel.app/lab/secondlab/login',
     github: 'https://github.com/Labintel-dev/Labintel.git',
     tech: ['React 18', 'Node.js 20', 'Express', 'Supabase', 'PostgreSQL (RLS)', 'Puppeteer', 'Tailwind CSS'],
     stats: [
@@ -298,7 +298,7 @@ const Projects = () => {
               </button>
 
               <a
-                href="https://labintelorg.vercel.app/"
+                href="https://labintelorg.vercel.app/lab/secondlab/login"
                 target="_blank"
                 rel="noreferrer"
                 className="px-5 py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white font-semibold text-xs sm:text-sm flex items-center gap-2 transition-all cursor-pointer"
