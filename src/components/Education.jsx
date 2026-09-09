@@ -112,9 +112,9 @@ const Education = () => {
     {
       institution: 'AIForEveryone',
       degree: 'Certified AI Builder (Level II) - AI for Engineers',
-      year: 'May 16, 2026',
+      year: 'May 18, 2026',
       grade: 'ID: CERT-9IB1WQ-TDMUYV',
-      certificateUrl: '/ai_for_everyone.jpg'
+      certificateUrl: '/Ai-cirtificate.jpeg'
     },
     {
       institution: 'CDAC (Centre for Development of Advanced Computing)',

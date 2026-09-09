@@ -19,7 +19,7 @@ const Experience = () => {
       color: '#2563EB',
       glow: 'rgba(37,99,235,0.08)',
       role: 'AI Builder Intern',
-      period: '23 Mar, 2026 - 09 May, 2026',
+      period: '23 Mar, 2026 - 18 May, 2026',
       domain: 'IT / Computers - Software',
       tasks: [
         'Successfully completed the AI for Engineers training program and earned the Certified AI Builder – Level II certification.',
@@ -27,7 +27,7 @@ const Experience = () => {
         'Developed skills in AI solution design, prompt engineering, workflow automation, innovation, and solving real-world engineering problems using artificial intelligence technologies.'
       ],
       skills: ['Artificial Intelligence', 'Machine Learning', 'Prompt Engineering', 'Generative AI', 'ChatGPT', 'Claude AI'],
-      certificateUrl: '/ai_for_everyone.jpg'
+      certificateUrl: '/Ai-cirtificate.jpeg'
     },
     {
       company: 'CDAC',
