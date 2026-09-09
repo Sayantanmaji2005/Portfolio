@@ -151,10 +151,23 @@ const Navbar = () => {
             setIsDark(!isDark);
           }}
           onMouseEnter={playHover}
-          className="p-2.5 rounded-xl text-sky-600 dark:text-sky-400 bg-slate-100 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-700/60 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all duration-300 cursor-pointer flex items-center justify-center shadow-sm"
+          className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-xl text-amber-500 dark:text-sky-400 bg-slate-100 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-700/60 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-300 cursor-pointer flex items-center justify-center shadow-sm overflow-hidden"
           aria-label="Toggle theme"
+          title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
         >
-          {isDark ? <FiSun className="w-4 h-4 sm:w-4.5 sm:h-4.5" /> : <FiMoon className="w-4 h-4 sm:w-4.5 sm:h-4.5" />}
+          <motion.div
+            key={isDark ? 'sun' : 'moon'}
+            initial={{ rotate: -70, scale: 0.6, opacity: 0 }}
+            animate={{ rotate: 0, scale: 1, opacity: 1 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="flex items-center justify-center"
+          >
+            {isDark ? (
+              <FiSun className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-amber-400" />
+            ) : (
+              <FiMoon className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-indigo-600" />
+            )}
+          </motion.div>
         </button>
       </div>
     </motion.header>
