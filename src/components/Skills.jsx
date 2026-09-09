@@ -367,13 +367,13 @@ const Skills = () => {
       {/* ─────────────────────────────────────────────────────────────
           INTERACTIVE CATEGORY NAVIGATOR PILLS
          ───────────────────────────────────────────────────────────── */}
-      <div className="flex items-center justify-center mb-10 overflow-x-auto pb-2 custom-scrollbar">
-        <div className="flex items-center gap-1.5 p-1.5 rounded-2xl bg-slate-200/80 dark:bg-slate-900/80 border border-slate-300/80 dark:border-slate-800 shadow-sm max-w-full">
+      <div className="w-full flex items-center justify-start sm:justify-center mb-8 sm:mb-10 overflow-x-auto no-scrollbar scrollbar-none pb-2 px-1">
+        <div className="inline-flex items-center gap-1.5 p-1.5 rounded-2xl bg-slate-200/80 dark:bg-slate-900/80 border border-slate-300/80 dark:border-slate-800 shadow-sm shrink-0">
           {categoryTabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
+              className={`flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer shrink-0 ${
                 activeTab === tab.id
                   ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30'
                   : 'text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-300/50 dark:hover:bg-slate-800/50'
@@ -404,7 +404,7 @@ const Skills = () => {
 
           <motion.div 
             layout
-            className="grid grid-cols-2 sm:grid-cols-3 gap-3.5"
+            className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3.5"
           >
             <AnimatePresence>
               {filteredSkills.map((skill, index) => {
@@ -426,7 +426,7 @@ const Skills = () => {
                       setSelectedSkill(skill);
                     }}
                     onMouseLeave={() => setHoveredSkillId(null)}
-                    className={`relative p-4 rounded-2xl border transition-all cursor-pointer overflow-hidden ${
+                    className={`relative p-3 sm:p-4 rounded-2xl border transition-all cursor-pointer overflow-hidden ${
                       isSelected
                         ? 'bg-blue-50/90 dark:bg-slate-900/95 border-blue-500 shadow-lg shadow-blue-500/20'
                         : 'bg-white dark:bg-slate-900/60 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 shadow-sm'
@@ -440,8 +440,8 @@ const Skills = () => {
                       />
                     )}
 
-                    <div className="flex items-start justify-between mb-3">
-                      <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800/80 flex items-center justify-center text-xl shadow-inner border border-slate-200 dark:border-slate-700">
+                    <div className="flex items-start justify-between mb-2.5 sm:mb-3">
+                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-100 dark:bg-slate-800/80 flex items-center justify-center text-lg sm:text-xl shadow-inner border border-slate-200 dark:border-slate-700">
                         {skill.icon}
                       </div>
 
@@ -450,16 +450,16 @@ const Skills = () => {
                       </span>
                     </div>
 
-                    <h4 className="font-bold text-sm text-slate-900 dark:text-white tracking-tight mb-1 truncate">
+                    <h4 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white tracking-tight mb-1 truncate">
                       {skill.name}
                     </h4>
 
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400 font-mono truncate">
+                    <p className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 font-mono truncate">
                       {skill.experience}
                     </p>
 
                     {/* Animated Micro Progress Bar */}
-                    <div className="mt-3 w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                    <div className="mt-2.5 sm:mt-3 w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
                       <motion.div
                         className="h-full rounded-full"
                         style={{ background: skill.color || '#3B82F6' }}
@@ -476,7 +476,7 @@ const Skills = () => {
         </div>
 
         {/* RIGHT PANEL (5 Cols): Live Detailed Skill Telemetry & Architecture Inspector */}
-        <div className="lg:col-span-5 sticky top-24">
+        <div className="lg:col-span-5 lg:sticky lg:top-24">
           <Tilt
             tiltMaxAngleX={4}
             tiltMaxAngleY={4}

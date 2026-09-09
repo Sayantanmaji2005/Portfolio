@@ -77,7 +77,7 @@ const EducationItem = ({ institution, degree, year, grade, index, certificateUrl
 
           {/* Certificate Action */}
           {certificateUrl && (
-            <div className={`mt-4 flex flex-col ${isEven ? 'items-start' : 'md:items-end'}`}>
+            <div className={`mt-4 flex flex-col items-start ${isEven ? 'md:items-start' : 'md:items-end'}`}>
               <a
                 href={certificateUrl}
                 download={certificateUrl !== '#' ? 'Certificate' : undefined}
@@ -90,7 +90,7 @@ const EducationItem = ({ institution, degree, year, grade, index, certificateUrl
                     setTimeout(() => setStatusMsg(''), 4500);
                   }
                 }}
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-mono text-xs font-bold shadow-md hover:shadow-sky-500/20 transition-all cursor-pointer"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 w-fit rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-mono text-xs font-bold shadow-md hover:shadow-sky-500/20 transition-all cursor-pointer"
               >
                 <FiDownload className="w-3.5 h-3.5" />
                 <span>Verify &amp; Download</span>
@@ -102,7 +102,7 @@ const EducationItem = ({ institution, degree, year, grade, index, certificateUrl
                   initial={{ opacity: 0, y: 5 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
-                  className="mt-2 text-[11px] font-mono text-amber-600 dark:text-amber-400 bg-amber-500/10 border border-amber-500/20 px-3 py-1.5 rounded-xl flex items-center gap-1.5 text-left"
+                  className="mt-2 text-[11px] font-mono text-amber-600 dark:text-amber-400 bg-amber-500/10 border border-amber-500/20 px-3 py-1.5 rounded-xl flex items-center gap-1.5 text-left w-fit max-w-full"
                 >
                   <FiCheckCircle className="w-3.5 h-3.5 flex-shrink-0 text-amber-500" />
                   <span>{statusMsg}</span>

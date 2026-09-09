@@ -114,14 +114,14 @@ const Hero = () => {
       </div>
 
       {/* Sound Mute/Unmute Control in Bottom LEFT Corner */}
-      <div className="absolute bottom-6 left-6 z-30">
+      <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 z-30">
         <button
           onClick={toggleMute}
           title={isMuted ? "Unmute Audio" : "Mute Audio"}
-          className="p-3 rounded-full bg-slate-900/90 hover:bg-slate-900 border border-slate-700 text-white backdrop-blur-md shadow-2xl transition-all transform hover:scale-110 cursor-pointer flex items-center gap-2 text-xs font-mono"
+          className="p-2 sm:p-3 rounded-full bg-slate-900/90 hover:bg-slate-900 border border-slate-700 text-white backdrop-blur-md shadow-2xl transition-all transform hover:scale-105 cursor-pointer flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-mono"
         >
-          {isMuted ? <FiVolumeX className="w-4 h-4 text-slate-400" /> : <FiVolume2 className="w-4 h-4 text-emerald-400" />}
-          <span>{isMuted ? "Audio Off" : "Audio On"}</span>
+          {isMuted ? <FiVolumeX className="w-3.5 h-3.5 text-slate-400" /> : <FiVolume2 className="w-3.5 h-3.5 text-emerald-400" />}
+          <span className="hidden xs:inline">{isMuted ? "Audio Off" : "Audio On"}</span>
         </button>
       </div>
 
@@ -289,45 +289,45 @@ const Hero = () => {
       </div>
 
       {/* ── FLOATING STATS DASHBOARD CARD ANCHORED AT BOTTOM-RIGHT CORNER (SAFE SPACING GUARANTEED) ── */}
-      <div className="absolute bottom-6 right-6 sm:bottom-8 sm:right-10 lg:right-12 z-30 max-w-[360px] sm:max-w-[385px] w-[88%] sm:w-auto">
+      <div className="absolute bottom-4 right-4 sm:bottom-8 sm:right-10 lg:right-12 z-30 max-w-[320px] sm:max-w-[385px] hidden sm:block">
         <motion.div
           initial={{ opacity: 0, scale: 0.9, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="p-4 sm:p-5 rounded-3xl bg-slate-950/95 backdrop-blur-2xl border border-slate-800/90 shadow-[0_0_60px_rgba(0,0,0,0.9)] flex flex-col gap-4 text-white"
+          className="p-3.5 sm:p-5 rounded-3xl bg-slate-950/95 backdrop-blur-2xl border border-slate-800/90 shadow-[0_0_60px_rgba(0,0,0,0.9)] flex flex-col gap-3 sm:gap-4 text-white"
         >
           {/* Header: Open to Work */}
-          <div className="flex items-center justify-between border-b border-slate-800/90 pb-3">
+          <div className="flex items-center justify-between border-b border-slate-800/90 pb-2.5 sm:pb-3">
             <div className="flex items-center gap-2">
               <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
               </span>
-              <span className="text-xs font-mono font-bold tracking-widest uppercase text-emerald-400">Open to Work</span>
+              <span className="text-[11px] sm:text-xs font-mono font-bold tracking-widest uppercase text-emerald-400">Open to Work</span>
             </div>
-            <span className="text-[11px] font-mono text-cyan-300 bg-slate-800/90 px-3 py-1 rounded-full border border-slate-700/80 font-semibold shadow-inner">
+            <span className="text-[10px] sm:text-[11px] font-mono text-cyan-300 bg-slate-800/90 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full border border-slate-700/80 font-semibold shadow-inner">
               Full-Stack & AI
             </span>
           </div>
 
           {/* Stats Row */}
-          <div className="grid grid-cols-3 gap-2.5">
-            <div className="flex flex-col items-center p-2.5 sm:p-3 rounded-2xl bg-slate-900/90 border border-slate-800/80 text-center shadow-lg">
-              <div className="w-8 h-8 rounded-full bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-1"><FiCode className="w-3.5 h-3.5"/></div>
-              <p className="text-lg font-bold font-heading text-white leading-none">07+</p>
-              <p className="text-[9px] text-slate-300 font-mono uppercase tracking-wider mt-1 font-medium">Projects</p>
+          <div className="grid grid-cols-3 gap-2 sm:gap-2.5">
+            <div className="flex flex-col items-center p-2 sm:p-3 rounded-2xl bg-slate-900/90 border border-slate-800/80 text-center shadow-lg">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-1"><FiCode className="w-3 sm:w-3.5 h-3 sm:h-3.5"/></div>
+              <p className="text-base sm:text-lg font-bold font-heading text-white leading-none">07+</p>
+              <p className="text-[8px] sm:text-[9px] text-slate-300 font-mono uppercase tracking-wider mt-1 font-medium">Projects</p>
             </div>
 
-            <div className="flex flex-col items-center p-2.5 sm:p-3 rounded-2xl bg-slate-900/90 border border-slate-800/80 text-center shadow-lg">
-              <div className="w-8 h-8 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-1"><FiBook className="w-3.5 h-3.5"/></div>
-              <p className="text-lg font-bold font-heading text-white leading-none">02</p>
-              <p className="text-[9px] text-slate-300 font-mono uppercase tracking-wider mt-1 font-medium">Certifs</p>
+            <div className="flex flex-col items-center p-2 sm:p-3 rounded-2xl bg-slate-900/90 border border-slate-800/80 text-center shadow-lg">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-1"><FiBook className="w-3 sm:w-3.5 h-3 sm:h-3.5"/></div>
+              <p className="text-base sm:text-lg font-bold font-heading text-white leading-none">02</p>
+              <p className="text-[8px] sm:text-[9px] text-slate-300 font-mono uppercase tracking-wider mt-1 font-medium">Certifs</p>
             </div>
 
-            <div className="flex flex-col items-center p-2.5 sm:p-3 rounded-2xl bg-slate-900/90 border border-slate-800/80 text-center shadow-lg">
-              <div className="w-8 h-8 rounded-full bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-1"><FiBriefcase className="w-3.5 h-3.5"/></div>
-              <p className="text-lg font-bold font-heading text-white leading-none">02</p>
-              <p className="text-[9px] text-slate-300 font-mono uppercase tracking-wider mt-1 font-medium">Offers</p>
+            <div className="flex flex-col items-center p-2 sm:p-3 rounded-2xl bg-slate-900/90 border border-slate-800/80 text-center shadow-lg">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-1"><FiBriefcase className="w-3 sm:w-3.5 h-3 sm:h-3.5"/></div>
+              <p className="text-base sm:text-lg font-bold font-heading text-white leading-none">02</p>
+              <p className="text-[8px] sm:text-[9px] text-slate-300 font-mono uppercase tracking-wider mt-1 font-medium">Offers</p>
             </div>
           </div>
         </motion.div>
