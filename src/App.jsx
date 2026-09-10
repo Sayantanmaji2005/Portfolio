@@ -61,10 +61,10 @@ function App() {
             <Hero />
             <About />
             <Skills />
-            <Education />
             <Experience />
-            <Terminal />
+            <Education />
             <Projects />
+            <Terminal />
             <SeedMartVision />
             <Github />
             <Contact />

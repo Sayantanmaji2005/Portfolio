@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiUser, FiCode, FiLayers, FiActivity, FiX, FiTerminal } from 'react-icons/fi';
 import { playHoverSound, playWhooshSound } from '../utils/soundFx';
@@ -12,11 +13,16 @@ const Terminal = () => {
     if (isModalOpen) {
       const originalBodyOverflow = document.body.style.overflow;
       const originalHtmlOverflow = document.documentElement.style.overflow;
+      const originalTouchAction = document.body.style.touchAction;
+
       document.body.style.overflow = 'hidden';
       document.documentElement.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
+
       return () => {
         document.body.style.overflow = originalBodyOverflow;
         document.documentElement.style.overflow = originalHtmlOverflow;
+        document.body.style.touchAction = originalTouchAction;
       };
     }
   }, [isModalOpen]);
@@ -126,7 +132,7 @@ const Terminal = () => {
         transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] }}
         className="text-left mb-12"
       >
-        <span className="section-label">05 // Terminal</span>
+        <span className="section-label">06 // Interactive Shell</span>
         <h3 
           className="text-4xl sm:text-5xl md:text-6xl font-black mt-3 mb-4 tracking-tight text-slate-900 dark:text-white"
           style={{ fontFamily: 'Syne, Outfit, sans-serif' }}
@@ -185,58 +191,61 @@ const Terminal = () => {
       </div>
 
       {/* ── MODAL POPUP OVERLAY ── */}
-      <AnimatePresence>
-        {isModalOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[120] flex items-center justify-center p-4 sm:p-6"
-          >
-            {/* Dark Backdrop */}
-            <div 
-              className="absolute inset-0 bg-black/60 backdrop-blur-sm cursor-pointer"
-              onClick={closeModal}
-            ></div>
-
-            {/* Modal Content Window */}
+      {createPortal(
+        <AnimatePresence>
+          {isModalOpen && (
             <motion.div
-              initial={{ scale: 0.5, opacity: 0, y: 50 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.5, opacity: 0, y: 50 }}
-              transition={{ type: 'spring', damping: 15, stiffness: 300 }}
-              className="relative w-full max-w-md bg-[#0A0A0A] rounded-2xl border border-slate-700 shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col max-h-[80vh]"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[99999] flex items-center justify-center p-4 sm:p-6 overflow-hidden"
             >
-              {/* Modal Header bar */}
-              <div className="bg-[#1A1A1A] border-b border-slate-800 px-3 py-2.5 flex items-center justify-between sticky top-0 z-10">
-                <div className="flex items-center gap-1.5">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]"></span>
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]"></span>
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]"></span>
-                  <span className="text-[10px] text-slate-400 font-mono ml-2">execution_window</span>
-                </div>
-                <button 
-                  onClick={closeModal}
-                  className="text-slate-400 hover:text-white transition-colors"
-                >
-                  <FiX className="w-4 h-4" />
-                </button>
-              </div>
+              {/* Dark Backdrop */}
+              <div 
+                className="fixed inset-0 bg-slate-950/85 backdrop-blur-md cursor-pointer"
+                onClick={closeModal}
+              ></div>
 
-              {/* Modal Body */}
-              <div className="p-4 sm:p-5 overflow-y-auto custom-scrollbar flex-grow">
-                {activeCmd && terminalOutput[activeCmd]}
-                
-                {/* Typing log cursor at bottom of modal */}
-                <div className="flex items-center gap-2 border-t border-slate-800 pt-3 mt-4 text-xs font-mono text-slate-500">
-                  <span>guest@sayantan.dev:~$</span>
-                  <span className="text-[#38BDF8] animate-pulse font-bold">_</span>
+              {/* Modal Content Window */}
+              <motion.div
+                initial={{ scale: 0.5, opacity: 0, y: 50 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.5, opacity: 0, y: 50 }}
+                transition={{ type: 'spring', damping: 15, stiffness: 300 }}
+                className="relative w-full max-w-md bg-[#0A0A0A] rounded-2xl border border-slate-700 shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col max-h-[80vh] z-10"
+              >
+                {/* Modal Header bar */}
+                <div className="bg-[#1A1A1A] border-b border-slate-800 px-3 py-2.5 flex items-center justify-between sticky top-0 z-10">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]"></span>
+                    <span className="text-[10px] text-slate-400 font-mono ml-2">execution_window</span>
+                  </div>
+                  <button 
+                    onClick={closeModal}
+                    className="text-slate-400 hover:text-white transition-colors cursor-pointer"
+                  >
+                    <FiX className="w-4 h-4" />
+                  </button>
                 </div>
-              </div>
+
+                {/* Modal Body */}
+                <div className="p-4 sm:p-5 overflow-y-auto custom-scrollbar flex-grow">
+                  {activeCmd && terminalOutput[activeCmd]}
+                  
+                  {/* Typing log cursor at bottom of modal */}
+                  <div className="flex items-center gap-2 border-t border-slate-800 pt-3 mt-4 text-xs font-mono text-slate-500">
+                    <span>guest@sayantan.dev:~$</span>
+                    <span className="text-[#38BDF8] animate-pulse font-bold">_</span>
+                  </div>
+                </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
 
     </section>
   );

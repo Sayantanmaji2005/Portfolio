@@ -79,6 +79,7 @@ const Contact = () => {
         transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] }}
         className="mb-16 relative"
       >
+        <span className="section-label mb-2">09 // Get In Touch</span>
         <span className="text-xs font-mono font-medium text-slate-400 block mb-2">That's all for now.</span>
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>

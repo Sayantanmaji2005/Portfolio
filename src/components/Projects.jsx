@@ -285,7 +285,7 @@ const Projects = () => {
         className="text-left mb-12"
       >
         <div className="flex items-center gap-2 mb-2">
-          <span className="section-label">06 // Portfolio Showcase</span>
+          <span className="section-label">05 // Portfolio Showcase</span>
           <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
             Engineered Systems & Architecture
           </span>
@@ -487,11 +487,8 @@ const Projects = () => {
               perspective={1200}
               transitionSpeed={1200}
               scale={1.01}
-              glareEnable={true}
-              glareMaxOpacity={0.08}
-              glareColor={project.color || "#ffffff"}
-              glarePosition="all"
-              className="aurora-card shimmer-card rounded-3xl p-6 sm:p-7 flex flex-col justify-between overflow-hidden group h-full relative border border-slate-200 dark:border-slate-800 hover:border-blue-500/50 transition-all shadow-md dark:shadow-none"
+              glareEnable={false}
+              className="aurora-card rounded-3xl p-6 sm:p-7 flex flex-col justify-between overflow-hidden group h-full relative border border-slate-200 dark:border-slate-800 hover:border-blue-500/50 transition-all shadow-md dark:shadow-none"
             >
               {/* Glow backdrop */}
               <div 

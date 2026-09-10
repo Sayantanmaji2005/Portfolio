@@ -4,6 +4,8 @@ import {
   FiHome, 
   FiUser, 
   FiCpu, 
+  FiBriefcase,
+  FiAward,
   FiFolder, 
   FiTerminal, 
   FiGithub,
@@ -18,6 +20,8 @@ const dockLinks = [
   { id: 'home', label: 'Home', icon: <FiHome /> },
   { id: 'about', label: 'About', icon: <FiUser /> },
   { id: 'skills', label: 'Skills', icon: <FiCpu /> },
+  { id: 'experience', label: 'Experience', icon: <FiBriefcase /> },
+  { id: 'education', label: 'Education', icon: <FiAward /> },
   { id: 'projects', label: 'Projects', icon: <FiFolder /> },
   { id: 'terminal', label: 'Terminal', icon: <FiTerminal /> },
   { id: 'vision', label: 'SeedMart Vision', icon: <FaSeedling /> },
@@ -96,11 +100,11 @@ const Navbar = () => {
       </div>
 
       {/* ── Center Navigation Dock ── */}
-      <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-1 sm:gap-1.5 p-1.5 rounded-2xl bg-slate-100/90 dark:bg-slate-950/90 border border-slate-200/80 dark:border-slate-800 shadow-lg backdrop-blur-xl transition-colors duration-300">
+      <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-0.5 sm:gap-1.5 p-1 sm:p-1.5 rounded-2xl bg-slate-100/90 dark:bg-slate-950/90 border border-slate-200/80 dark:border-slate-800 shadow-lg backdrop-blur-xl transition-colors duration-300 max-w-[calc(100vw-110px)] sm:max-w-none overflow-x-auto no-scrollbar">
         {dockLinks.map(({ id, label, icon }) => {
           const isActive = activeSection === id;
           return (
-            <div key={id} className="relative group">
+            <div key={id} className="relative group shrink-0">
               <button
                 onClick={(e) => {
                   e.preventDefault();
@@ -108,14 +112,14 @@ const Navbar = () => {
                   scrollToSection(id);
                 }}
                 onMouseEnter={playHover}
-                className={`p-2 sm:p-2.5 rounded-xl transition-all duration-300 flex items-center justify-center cursor-pointer relative ${
+                className={`p-1.5 sm:p-2.5 rounded-xl transition-all duration-300 flex items-center justify-center cursor-pointer relative ${
                   isActive
                     ? 'text-blue-600 dark:text-white bg-white dark:bg-white/20 shadow-sm font-bold scale-105'
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-white/10'
                 }`}
                 aria-label={label}
               >
-                <span className="text-base sm:text-lg [&>svg]:w-4 [&>svg]:h-4 sm:[&>svg]:w-4.5 sm:[&>svg]:h-4.5">
+                <span className="text-sm sm:text-lg [&>svg]:w-3.5 sm:[&>svg]:w-4.5 [&>svg]:h-3.5 sm:[&>svg]:h-4.5">
                   {icon}
                 </span>
 

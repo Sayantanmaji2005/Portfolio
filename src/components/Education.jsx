@@ -154,7 +154,7 @@ const Education = () => {
         transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] }}
         className="text-left mb-16"
       >
-        <span className="section-label">03 // Academics</span>
+        <span className="section-label">04 // Academics & Certifications</span>
         <h3
           className="text-4xl sm:text-5xl md:text-6xl font-black mt-3 mb-4 tracking-tight text-slate-900 dark:text-white"
           style={{ fontFamily: 'Syne, Outfit, sans-serif' }}

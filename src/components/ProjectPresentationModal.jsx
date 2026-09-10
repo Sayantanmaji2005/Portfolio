@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FiX, FiChevronLeft, FiChevronRight, FiDownload, FiExternalLink, 
@@ -810,11 +811,16 @@ export default function ProjectPresentationModal({ isOpen, onClose, project }) {
     if (isOpen) {
       const originalBodyOverflow = document.body.style.overflow;
       const originalHtmlOverflow = document.documentElement.style.overflow;
+      const originalTouchAction = document.body.style.touchAction;
+
       document.body.style.overflow = 'hidden';
       document.documentElement.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
+
       return () => {
         document.body.style.overflow = originalBodyOverflow;
         document.documentElement.style.overflow = originalHtmlOverflow;
+        document.body.style.touchAction = originalTouchAction;
       };
     }
   }, [isOpen]);
@@ -823,16 +829,16 @@ export default function ProjectPresentationModal({ isOpen, onClose, project }) {
 
   const slide = slides[currentSlide];
 
-  return (
+  return createPortal(
     <AnimatePresence>
-      <div className="fixed inset-0 z-[120] flex items-center justify-center p-3 sm:p-6 md:p-8">
+      <div className="fixed inset-0 z-[99999] flex items-center justify-center p-3 sm:p-6 md:p-8 overflow-hidden">
         {/* Backdrop (Dark in dark mode, softly tinted blur in light mode) */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="absolute inset-0 bg-slate-900/60 dark:bg-black/85 backdrop-blur-md"
+          className="fixed inset-0 bg-slate-950/85 backdrop-blur-md"
         />
 
         {/* Modal Window */}
@@ -1017,6 +1023,7 @@ export default function ProjectPresentationModal({ isOpen, onClose, project }) {
           </div>
         </motion.div>
       </div>
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }

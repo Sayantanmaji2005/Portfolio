@@ -1,14 +1,23 @@
 import React, { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiX, FiShield, FiCheckCircle, FiAward, FiDownload } from 'react-icons/fi';
 
 const CertificateModal = ({ isOpen, onClose, certificate }) => {
   useEffect(() => {
     if (isOpen) {
-      const originalOverflow = document.body.style.overflow;
+      const originalBodyOverflow = document.body.style.overflow;
+      const originalHtmlOverflow = document.documentElement.style.overflow;
+      const originalTouchAction = document.body.style.touchAction;
+
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
+
       return () => {
-        document.body.style.overflow = originalOverflow;
+        document.body.style.overflow = originalBodyOverflow;
+        document.documentElement.style.overflow = originalHtmlOverflow;
+        document.body.style.touchAction = originalTouchAction;
       };
     }
   }, [isOpen]);
@@ -17,16 +26,16 @@ const CertificateModal = ({ isOpen, onClose, certificate }) => {
 
   const isPdf = certificate.url?.toLowerCase().endsWith('.pdf');
 
-  return (
+  return createPortal(
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6">
+      <div className="fixed inset-0 z-[99999] flex items-center justify-center p-3 sm:p-6 overflow-hidden">
         {/* Backdrop */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="fixed inset-0 bg-slate-950/80 backdrop-blur-md transition-opacity"
+          className="fixed inset-0 bg-slate-950/85 backdrop-blur-md transition-opacity"
         />
 
         {/* Modal Container */}
@@ -124,7 +133,8 @@ const CertificateModal = ({ isOpen, onClose, certificate }) => {
           </div>
         </motion.div>
       </div>
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 };
 
