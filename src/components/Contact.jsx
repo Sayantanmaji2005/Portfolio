@@ -45,10 +45,10 @@ const Contact = () => {
     setStatus('sending');
 
     emailjs.sendForm(
-      'YOUR_SERVICE_ID', // Replace with your EmailJS Service ID
-      'YOUR_TEMPLATE_ID', // Replace with your EmailJS Template ID
+      'service_jaetnh9',
+      'template_h777mu9',
       formRef.current,
-      'YOUR_PUBLIC_KEY' // Replace with your EmailJS Public Key
+      '38FgU95l0kT1y-_G2'
     ).then((result) => {
         setStatus('success');
         setFormData({ name: '', email: '', subject: '', message: '' });
