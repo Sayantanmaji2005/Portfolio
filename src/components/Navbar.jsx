@@ -11,10 +11,12 @@ import {
   FiGithub,
   FiMail, 
   FiSun, 
-  FiMoon 
+  FiMoon,
+  FiEye
 } from 'react-icons/fi';
 import { FaSeedling } from 'react-icons/fa6';
 import useSoundEffects from '../hooks/useSoundEffects';
+import useVisitorCount from '../hooks/useVisitorCount';
 
 const dockLinks = [
   { id: 'home', label: 'Home', icon: <FiHome /> },
@@ -31,6 +33,7 @@ const dockLinks = [
 
 const Navbar = () => {
   const { playHover, playClick } = useSoundEffects();
+  const { formattedCount } = useVisitorCount();
   const [activeSection, setActiveSection] = useState('home');
   const [isDark, setIsDark] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -143,9 +146,19 @@ const Navbar = () => {
       </div>
 
       {/* ── Right Action Controls ── */}
-      <div className="flex items-center gap-2 sm:gap-3">
+      <div className="flex items-center gap-2 sm:gap-2.5">
+        {/* Visitor Counter Badge */}
+        <div 
+          className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-cyan-500/10 border border-cyan-500/25 text-cyan-600 dark:text-cyan-400 font-mono text-[11px] sm:text-xs font-bold shadow-sm backdrop-blur-md"
+          title="Total Unique Portfolio Visitors"
+        >
+          <FiEye className="w-3.5 h-3.5 text-cyan-500 dark:text-cyan-400" />
+          <span>{formattedCount}</span>
+          <span className="hidden xl:inline text-[10px] text-slate-500 dark:text-slate-400 font-normal">visits</span>
+        </div>
+
         {/* Availability Badge */}
-        <div className="hidden md:flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 font-mono text-[11px] font-semibold">
+        <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 font-mono text-[11px] font-semibold">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
           <span>Open to Work</span>
         </div>

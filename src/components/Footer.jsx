@@ -1,7 +1,10 @@
-import { FiGithub, FiLinkedin, FiMail, FiCode, FiArrowUp } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail, FiCode, FiArrowUp, FiEye, FiUsers, FiActivity } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import useVisitorCount from '../hooks/useVisitorCount';
 
 const Footer = () => {
+  const { formattedCount, liveWatchers } = useVisitorCount();
+
   const socialLinks = [
     { name: 'GitHub', icon: <FiGithub className="w-4.5 h-4.5" />, url: 'https://github.com/Sayantanmaji2005' },
     { name: 'LinkedIn', icon: <FiLinkedin className="w-4.5 h-4.5" />, url: 'https://linkedin.com/in/sayantanmaji2005' },
@@ -22,7 +25,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Footer Row */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-10 border-b border-slate-200 dark:border-white/10">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-8 border-b border-slate-200 dark:border-white/10">
           
           {/* Left Column: Branding */}
           <div className="flex flex-col items-center md:items-start gap-2 text-center md:text-left">
